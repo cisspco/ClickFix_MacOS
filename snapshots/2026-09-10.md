@@ -1,0 +1,129 @@
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-09-10 UTC
+
+## 수집 상태
+- 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
+- 추가 페치 성공: [ClickFix campaign uses fake macOS utilities lures to deliver infostealers](https://www.microsoft.com/en-us/security/blog/2026/05/06/clickfix-campaign-uses-fake-macos-utilities-lures-deliver-infostealers/) (관련 캠페인 — 아래 참고 참조, IOC로는 미채택)
+- 추가 페치 차단: rstcloud.com, huntress.com, gbhackers.com, blog.rankiteo.com
+- seed: 8 / 검증: 37 / 미검증: 1
+
+## 캐페인 개요
+가짜 Claude Desktop/Claude Code 설치 페이지(검색광고)를 통한 ClickFix 기법으로 사용자가 터미널에 명령을 직접 붙여넣게 유도하고, 아키텍처에 맞는 악성 Mach-O를 다운로드·실행. MacSync 모듈이 Chromium계·Firefox·Safari 쿠키·프로파일을 수집해 외부로 유출. 탈취된 세션 쿠키로 기존 로그인 재사용 가능.
+
+Microsoft는 2026-08-18 보고서에서 행위 기반 피벗(behavioral pivot) 분석을 통해 MacSync Stealer의 C2/유출 인프라 31개 도메인을 식별했다(본 스냅샷의 주 검증 출처). 이 보고서에는 파일 해시가 포함되지 않았다.
+
+**참고(별도 캠페인, IOC 미채택):** Microsoft는 별도의 2026-05-06 보고서에서 "가짜 macOS 유틸리티" 유형 유인(클린업 도구 등, Claude 위장이 아님)을 사용하는 ClickFix 캠페인을 다뤘으며, 여기서 MacSync·Shub Stealer·AMOS 세 악성코드 계열이 언급되었다. 다만 이 보고서는 어느 C2 도메인/해시가 구체적으로 MacSync 계열에 해당하는지 명확히 구분하지 않아(Helper 캠페인만 AMOS로 명시), 본 캠페인(가짜 Claude 설치 페이지 체인)의 IOC로 채택하지 않고 배경 정보로만 기록한다.
+
+## 공격 체인
+1. 가짜 설치 페이지 유도 (검색광고) — 가짜 Claude Desktop/Claude Code 설치·다운로드 페이지가 검색엔진 광고(Google 등)를 통해 노출됨. 정상 anthropic[.]com/claude[.]ai 도메인은 공격자 인프라가 아니며 광고 플랫폼 자체도 공격자 인프라가 아님.
+2. 터미널 명령 복사·붙여넣기 유도 — 설치 안내를 가장해 피해자가 Terminal에 명령을 직접 붙여넣도록 유도 (ClickFix, T1204.004).
+3. Mach-O 다운로드 · Gatekeeper 우회 — 피해자 아키텍처에 맞는 Mach-O 바이너리를 다운로드 후 `xattr -rd com.apple.quarantine`로 격리 속성 제거, `codesign --force --sign -`로 애드혹 재서명.
+4. 지속성 (cksyncd) — `~/Library/Application Support/.com.apple.airport/` 하위에 `cksyncd`, `.cksyncd.v`로 위장 설치, `open -g -j -n -a --args`로 은닉 실행.
+5. 브라우저 정보 탈취 (MacSync) — `--user-data-dir=<...cksync...>` 옵션으로 Chromium 계열을 별도 프로파일로 실행해 쿠키·프로파일 판독, Firefox·Safari 데이터도 함께 수집.
+6. 외부 유출 · 세션 재사용 위험 — `/curl/`, `/dynamic?txd=`, `/gate?buildtxd=` 등 URI 패턴과 HTTP PUT(`--data-binary`) + `api-key` 헤더로 청크 단위(`upload_id`/`chunk_index`/`total_chunks`) 업로드. 탈취된 세션 쿠키로 기존 로그인 세션 재사용 가능 — 비밀번호 변경/MFA 활성화만으로는 무효화되지 않음.
+
+## 공격자 인프라 — 가짜 설치/C2 (차단 대상) (31)
+- aihealthring[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- cabinrentalsnc[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- chatbasedos[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- commercialroofingsd[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- dogtrainersgeorgia[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- fintelliganceai[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- homeinspectionsdelaware[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- intopython[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- lalandscapelighting[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- lumenagnet[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- marbellaresales[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- miamipcsupport[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- moldinspectiondayton[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- nailscanai[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- newjerseypetsitter[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- numericagent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- oaklandwaterdamage[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- oklahomawarehousing[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- olympiapetemergency[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- peaecagent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- plasmaticsystems[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- plethorawallet[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- premierrentalpurchase[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- ricewaterbeauty[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- rvieragent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- sandiegotkd[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- secueragent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- shiledagent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- syracusefertilitycenter[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- vastbets[.]com — C2/유출, Microsoft(2026-08-18) — verified
+- wvaeagent[.]com — C2/유출, Microsoft(2026-08-18) — verified
+
+## 파일 해시 (0)
+### SHA-256
+이번 실행에서 검증된 해시 없음. Microsoft(2026-08-18) 보고서는 해시를 포함하지 않았고, ThreatFox·Beelzebub는 접근 차단됨.
+
+## 호스트 IOC · 행위 (누적)
+전체 목록은 `host-iocs.md` 참조.
+- `~/Library/Application Support/.com.apple.airport/`, `cksyncd`, `.cksyncd.v` — seed
+- `xattr -rd com.apple.quarantine`, `codesign --force --sign -`, `open -g -j -n -a --args`, `--user-data-dir=<...cksync...>` — seed
+- `/tmp/sync*`, `/tmp/osalogging.zip` — verified (Microsoft, 2026-08-18)
+- URI 패턴 `/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`; PUT `--data-binary`; 헤더 `api-key`; 업로드 파라미터 `upload_id`/`chunk_index`/`total_chunks` — verified (Microsoft, 2026-08-18)
+- API 키 `5190ef1733183a0dc63fb623357f56d6` (C2 인증 추정) — ⚠️ (미검증)
+
+## 이번 실행 변경사항
+- 신규 인프라: 도메인 31건 (Microsoft, 2026-08-18) — 상단 표 참조
+- 신규 해시: 없음
+- 승격(미검증→검증): 없음 (최초 실행)
+- 폐기(sinkhole/takedown): 없음
+- 신규 보고서: [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) (Microsoft, 2026-08-18)
+
+## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
+- 감염 의심 단말 네트워크 격리
+- 브라우저 종료 후 서버측 세션·토큰 강제 무효화
+- 비밀번호 재설정, 필요 시 OAuth 토큰·앱 비밀번호 폐기
+- 최근 로그인 기록에서 비정상 IP·지역·기기 접속 점검
+
+## 차단 운영 포맷 (복붙용)
+
+### Domain blocklist (un-defanged, one per line — attacker infrastructure only)
+```
+aihealthring.com
+cabinrentalsnc.com
+chatbasedos.com
+commercialroofingsd.com
+dogtrainersgeorgia.com
+fintelliganceai.com
+homeinspectionsdelaware.com
+intopython.com
+lalandscapelighting.com
+lumenagnet.com
+marbellaresales.com
+miamipcsupport.com
+moldinspectiondayton.com
+nailscanai.com
+newjerseypetsitter.com
+numericagent.com
+oaklandwaterdamage.com
+oklahomawarehousing.com
+olympiapetemergency.com
+peaecagent.com
+plasmaticsystems.com
+plethorawallet.com
+premierrentalpurchase.com
+ricewaterbeauty.com
+rvieragent.com
+sandiegotkd.com
+secueragent.com
+shiledagent.com
+syracusefertilitycenter.com
+vastbets.com
+wvaeagent.com
+```
+
+### IP blocklist (un-defanged, one per line)
+```
+(없음 — 이번 실행에서 검증된 IP 없음)
+```
+
+## 출처
+- [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
+- [ThreatFox IOC #1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미상 — blocked
+- [Beelzebub — MacSync Stealer / Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미상 — blocked
+- [ClickFix campaign uses fake macOS utilities lures to deliver infostealers](https://www.microsoft.com/en-us/security/blog/2026/05/06/clickfix-campaign-uses-fake-macos-utilities-lures-deliver-infostealers/) — 2026-05-06 — fetched (관련 캠페인, IOC 미채택 — 위 참고 참조)
+- FSEC(금융보안원) 2026-09 보안 권고 — 날짜 미상 — seed(advisory)
