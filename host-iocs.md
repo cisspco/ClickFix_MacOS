@@ -28,6 +28,12 @@
 
 - API 키 `5190ef1733183a0dc63fb623357f56d6` — C2 인증(`api-key` 헤더) 값으로 추정. 언급한 원문(RST Cloud/Huntress 계열)이 프록시에 의해 차단되어 검색 스니펫으로만 확인됨 — ⚠️ (미검증)
 - houstongaragedoorinstallers[.]com — 위 API 키와 함께 언급된 신규 C2 후보 도메인(RST Cloud, 검색 스니펫, 원문 차단) — ⚠️ (미검증) (2026-09-11 추가)
+- MaaS(Malware-as-a-Service) 임대 모델 — MacSync Stealer가 타 공격자에게 임대되는 형태로 운영된다는 서술(RST Cloud 계열, 검색 스니펫, 원문 차단) — ⚠️ (미검증) (2026-09-17 추가)
+- 파일리스/인메모리 실행 변종 — 2026-02 캠페인 변종이 파일리스·인메모리 실행 방식으로 EDR 탐지를 우회하며 미국 SLTT(주·지방·부족·준주) 정부기관을 표적했다는 서술(검색 스니펫, 원문 차단) — ⚠️ (미검증) (2026-09-17 추가)
+- 6단계 감염 체인 · RAT 컴포넌트 — Huntress가 MacSync Stealer/RAT을 6단계로 리버스엔지니어링했다는 언급(제목만 확인, 원문 차단) — ⚠️ (미검증) (2026-09-17 추가)
+- 서명된 변종(코드사이닝 우회 변화) — "재구성된 MacSync Stealer가 더 조용한 설치 방식(정식/도용 서명 인증서 사용 추정)을 채택"이라는 보도 제목(원문 미확인) — seed의 애드혹 코드사이닝(`codesign --force --sign -`)과 다른 우회 방식일 가능성 — ⚠️ (미검증) (2026-09-17 추가)
+- SEO 포이즈닝 · 가짜 GitHub 저장소 배포 벡터 — ClickFix 붙여넣기 유도 외에 SEO 포이즈닝 및 가짜 GitHub 저장소를 통한 재유행이 보고되었다는 제목(daylight.ai, 원문 차단) — ⚠️ (미검증) (2026-09-17 추가)
+- "InstallFix" 캠페인과의 연관 가능성 — 다수 벤더(Rapid7, Trend Micro, Malwarebytes, Push Security, Bitdefender 등)가 동일한 가짜 Claude Code/Claude Desktop 설치 페이지(Google 광고)가 Windows에는 MSIX/PowerShell 계열 악성코드를 배포한다고 보고. macOS/MacSync와 동일 배포 인프라를 공유하는 더 넓은 캠페인의 일부일 가능성이 있으나 Windows측 IOC는 본 저장소 범위 밖 — ⚠️ (미검증, 맥락 정보) (2026-09-17 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 

@@ -2,7 +2,7 @@
 
 **MacSync Stealer**는 가짜 **Claude Desktop / Claude Code 설치 페이지**(검색광고를 통해 노출)를 이용한 ClickFix 기법으로 macOS 사용자에게 터미널 명령을 직접 붙여넣게 유도해 배포되는 macOS 인포스틸러입니다. Anthropic의 실제 제품(Claude Desktop, Claude Code)을 사칭하는 캠페인이며, 이 저장소는 방어적 탐지·차단 목적의 IOC를 일일 스냅샷으로 추적합니다.
 
-- **최종 갱신 (UTC):** 2026-09-16
+- **최종 갱신 (UTC):** 2026-09-17
 - **도메인:** 31 (검증 31 / 미검증 0)
 - **IP:** 0 (검증 0 / 미검증 0)
 - **해시:** 0
