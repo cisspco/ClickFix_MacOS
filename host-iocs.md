@@ -34,6 +34,9 @@
 - 서명된 변종(코드사이닝 우회 변화) — "재구성된 MacSync Stealer가 더 조용한 설치 방식(정식/도용 서명 인증서 사용 추정)을 채택"이라는 보도 제목(원문 미확인) — seed의 애드혹 코드사이닝(`codesign --force --sign -`)과 다른 우회 방식일 가능성 — ⚠️ (미검증) (2026-09-17 추가)
 - SEO 포이즈닝 · 가짜 GitHub 저장소 배포 벡터 — ClickFix 붙여넣기 유도 외에 SEO 포이즈닝 및 가짜 GitHub 저장소를 통한 재유행이 보고되었다는 제목(daylight.ai, 원문 차단) — ⚠️ (미검증) (2026-09-17 추가)
 - "InstallFix" 캠페인과의 연관 가능성 — 다수 벤더(Rapid7, Trend Micro, Malwarebytes, Push Security, Bitdefender 등)가 동일한 가짜 Claude Code/Claude Desktop 설치 페이지(Google 광고)가 Windows에는 MSIX/PowerShell 계열 악성코드를 배포한다고 보고. macOS/MacSync와 동일 배포 인프라를 공유하는 더 넓은 캠페인의 일부일 가능성이 있으나 Windows측 IOC는 본 저장소 범위 밖 — ⚠️ (미검증, 맥락 정보) (2026-09-17 추가)
+- MacSync 신규 변종(백도어 겸용) — Kaspersky가 2026-09-17경 더 복잡한 감염 체인을 사용하는 MacSync 신버전을 발견, 인포스틸러와 백도어를 함께 전달하며 자격증명·사용자 데이터·암호화폐 자산을 표적한다고 보도(검색 스니펫, 원문/인용 매체 모두 원문 차단). 기존 Huntress "RAT 컴포넌트" 미검증 서술과 방향 일치 — ⚠️ (미검증) (2026-09-18 추가)
+- InstallFix 플랫폼별 악성코드 배포 확인(부분) — Trend Micro가 InstallFix 캠페인이 Windows/macOS에 플랫폼별로 다른 악성코드를 배포한다고 명시(검색 스니펫, 원문 차단) — 기존 "연관 가능성" 서술을 강화하나 원문 미확인 상태 유지 — ⚠️ (미검증) (2026-09-18 추가)
+- DMG 매개 배포 변형 — Google Ads 기반 ClickFix 캠페인이 DMG 파일을 통해 Mach-O를 전달하며 페이로드로 Macsync·Shub Stealer·AMOS 등을 언급하는 리포트 존재(Unit42 관련, 원문 미확인) — seed의 직접 다운로드형 Mach-O 외에 DMG 매개 변형 가능성 — ⚠️ (미검증) (2026-09-18 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
