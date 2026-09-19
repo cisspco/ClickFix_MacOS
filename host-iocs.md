@@ -37,6 +37,8 @@
 - MacSync 신규 변종(백도어 겸용) — Kaspersky가 2026-09-17경 더 복잡한 감염 체인을 사용하는 MacSync 신버전을 발견, 인포스틸러와 백도어를 함께 전달하며 자격증명·사용자 데이터·암호화폐 자산을 표적한다고 보도(검색 스니펫, 원문/인용 매체 모두 원문 차단). 기존 Huntress "RAT 컴포넌트" 미검증 서술과 방향 일치 — ⚠️ (미검증) (2026-09-18 추가)
 - InstallFix 플랫폼별 악성코드 배포 확인(부분) — Trend Micro가 InstallFix 캠페인이 Windows/macOS에 플랫폼별로 다른 악성코드를 배포한다고 명시(검색 스니펫, 원문 차단) — 기존 "연관 가능성" 서술을 강화하나 원문 미확인 상태 유지 — ⚠️ (미검증) (2026-09-18 추가)
 - DMG 매개 배포 변형 — Google Ads 기반 ClickFix 캠페인이 DMG 파일을 통해 Mach-O를 전달하며 페이로드로 Macsync·Shub Stealer·AMOS 등을 언급하는 리포트 존재(Unit42 관련, 원문 미확인) — seed의 직접 다운로드형 Mach-O 외에 DMG 매개 변형 가능성 — ⚠️ (미검증) (2026-09-18 추가)
+  - **정정 (2026-09-19):** 위 항목이 인용한 Unit42 GitHub IOC 리포지토리(`2026-06-20-ClickFix-campaign-delivers-macOS-infostealer-via-DMG.txt`)를 직접 페치해 확인한 결과, 해당 리포트는 **AMOS(Atomic macOS Stealer)의 Odyssey 변종**을 다루며 가짜 CAPTCHA 유인을 사용하고 **MacSync나 가짜 Claude 설치 페이지는 전혀 언급하지 않음**. 해당 리포트의 IOC(svs-verificationdate[.]beer, fewfwfwfwfwf[.]info, 178.16.52[.]101, 196.251.107[.]171, SHA-256 4건)는 본 캠페인과 무관한 별개 인시던트로 판단해 채택하지 않음. 위 "DMG 매개 배포 변형" 서술 자체는 다른 출처(검색 스니펫)에 기반하므로 미검증 상태 유지하되, 이 특정 소스는 반증됨.
+- Squarespace 서브도메인 호스팅 — 가짜 Claude Code 설치 페이지 일부가 Squarespace 서브도메인에 정식 문서 페이지를 그대로 복제해 호스팅했다는 서술(Bitdefender 관련 검색 스니펫, 원문 미확인) — Mac 방문자는 난독화된 명령으로 Mach-O 백도어 수신 — ⚠️ (미검증) (2026-09-19 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
