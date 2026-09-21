@@ -43,6 +43,10 @@
 - 공유된 Claude 대화(chat) 링크 유인 벡터 — 검색광고 외에 공유된 Claude 대화 링크도 유인으로 사용되었다는 서술(cybersecuritynews.com, 원문 차단) — ⚠️ (미검증) (2026-09-20 추가)
 - Universal Mach-O 바이너리 — 최종 페이로드가 Intel/Apple Silicon 겸용 유니버설 바이너리라는 서술 — seed의 "아키텍처에 맞는 Mach-O" 표현을 구체화 — ⚠️ (미검증) (2026-09-20 추가)
 - **주의 — Amatera Stealer 혼동 가능성:** 일부 검색 결과가 "Amatera Stealer"(주로 Windows 대상으로 알려진 별개 패밀리)를 가짜 Claude 설치 페이지와 연결짓는 서술을 포함하나 원문 미확인. 2026-09-19의 Unit42/AMOS 오탐 사례와 유사한 캠페인 혼동 위험이 있어 본 저장소의 MacSync IOC로 채택하지 않음 — ⚠️ (미검증, 채택 보류) (2026-09-20 추가)
+- 가짜 설치 안내 호스팅 플랫폼 확장 — Squarespace/Google Sites 외에도 Cloudflare Pages, Tencent EdgeOne 등 정상 호스팅 플랫폼이 가짜 설치 안내 페이지 게재에 악용되었다는 서술(검색 스니펫, 원문 미확인). 이들 플랫폼 자체는 정상 서비스이므로 차단 대상 아님 — ⚠️ (미검증) (2026-09-21 추가)
+- 실행 파일명 패턴 — 2026-01 말 캠페인에서 "helper" 또는 "update"라는 이름의 실행 파일이 사용되었다는 서술(검색 스니펫, 원문 미확인) — ⚠️ (미검증) (2026-09-21 추가)
+- curl 플래그 세부사항 — 이차 출처(검색 스니펫)에 따르면 Microsoft가 연결한 인프라의 curl 명령에 `-k`, `-s`, `--max-time` 플래그 사용이 언급됨. 금일 Microsoft 원문 재페치 결과에는 해당 플래그가 명시적으로 나타나지 않아 원문 직접 확인은 안 됨 — 기존 verified 항목(`--data-binary`, `PUT`)에 대한 보강 서술로만 기록 — ⚠️ (미검증) (2026-09-21 추가)
+- InstallFix ↔ Claude Code 연관성 강화 — Trend Micro 보고서 제목("InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise")이 InstallFix 캠페인과 가짜 Claude Code 설치 페이지를 명시적으로 연결. 원문은 이번 실행에서도 차단되어 세부 IOC(특히 macOS측)는 미확인 — ⚠️ (미검증) (2026-09-21 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
