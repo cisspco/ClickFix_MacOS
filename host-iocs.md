@@ -47,6 +47,8 @@
 - 실행 파일명 패턴 — 2026-01 말 캠페인에서 "helper" 또는 "update"라는 이름의 실행 파일이 사용되었다는 서술(검색 스니펫, 원문 미확인) — ⚠️ (미검증) (2026-09-21 추가)
 - curl 플래그 세부사항 — 이차 출처(검색 스니펫)에 따르면 Microsoft가 연결한 인프라의 curl 명령에 `-k`, `-s`, `--max-time` 플래그 사용이 언급됨. 금일 Microsoft 원문 재페치 결과에는 해당 플래그가 명시적으로 나타나지 않아 원문 직접 확인은 안 됨 — 기존 verified 항목(`--data-binary`, `PUT`)에 대한 보강 서술로만 기록 — ⚠️ (미검증) (2026-09-21 추가)
 - InstallFix ↔ Claude Code 연관성 강화 — Trend Micro 보고서 제목("InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise")이 InstallFix 캠페인과 가짜 Claude Code 설치 페이지를 명시적으로 연결. 원문은 이번 실행에서도 차단되어 세부 IOC(특히 macOS측)는 미확인 — ⚠️ (미검증) (2026-09-21 추가)
+- **주의 — AppleScript 가짜 시스템 프롬프트 계열 캠페인과의 혼동 가능성:** Netskope 등이 보고한 별개의 macOS ClickFix 캠페인은 AppleScript 대화상자로 가짜 시스템 암호 프롬프트를 반복 표시해 자격증명을 탈취하고, 14개 브라우저·16개 암호화폐 지갑·200개 이상 확장 프로그램에서 세션 쿠키를 수집한다고 서술됨(검색 스니펫, 원문 미확인). 가짜 Claude 설치 페이지·MacSync와의 연결점은 확인되지 않아 본 저장소 IOC로 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-22 추가)
+- Kaspersky 신버전 MacSync 보도 추가 확산 — IT-Online(2026-09-21)이 동일한 Kaspersky MacSync 신버전(인포스틸러+백도어) 보도를 재보도. 2026-09-17 항목 대비 새로운 기술적 세부사항 없음(원문 접근 차단) — ⚠️ (미검증) (2026-09-22 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
