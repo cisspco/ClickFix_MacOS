@@ -49,6 +49,10 @@
 - InstallFix ↔ Claude Code 연관성 강화 — Trend Micro 보고서 제목("InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise")이 InstallFix 캠페인과 가짜 Claude Code 설치 페이지를 명시적으로 연결. 원문은 이번 실행에서도 차단되어 세부 IOC(특히 macOS측)는 미확인 — ⚠️ (미검증) (2026-09-21 추가)
 - **주의 — AppleScript 가짜 시스템 프롬프트 계열 캠페인과의 혼동 가능성:** Netskope 등이 보고한 별개의 macOS ClickFix 캠페인은 AppleScript 대화상자로 가짜 시스템 암호 프롬프트를 반복 표시해 자격증명을 탈취하고, 14개 브라우저·16개 암호화폐 지갑·200개 이상 확장 프로그램에서 세션 쿠키를 수집한다고 서술됨(검색 스니펫, 원문 미확인). 가짜 Claude 설치 페이지·MacSync와의 연결점은 확인되지 않아 본 저장소 IOC로 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-22 추가)
 - Kaspersky 신버전 MacSync 보도 추가 확산 — IT-Online(2026-09-21)이 동일한 Kaspersky MacSync 신버전(인포스틸러+백도어) 보도를 재보도. 2026-09-17 항목 대비 새로운 기술적 세부사항 없음(원문 접근 차단) — ⚠️ (미검증) (2026-09-22 추가)
+- LaaS(Loader-as-a-Service) 진화 서술 강화 — 검색 스니펫에 따르면 2026-02 시작된 세 번째 추적 캠페인이 네이티브 Mach-O 직접 전달 방식을 멀티스테이지 Loader-as-a-Service(LaaS) 모델로 대체 — 쉘 기반 로더, API 키 게이트형 C2, 동적 AppleScript 페이로드, 적극적인 인메모리 실행 사용. 기존 "파일리스/인메모리 실행 변종"(2026-09-17) 서술을 구체화하나 원문 미확인(출처 불명, MS-ISAC/CIS 계열 추정) — ⚠️ (미검증) (2026-09-23 추가)
+- 피해자 규모 통계 (주의 — Windows/InstallFix 측 수치 가능성) — 검색 스니펫에 "15,600명 이상의 피해자 확인" 서술이 등장했으나, 동일 스니펫이 MSIX/HTA/PowerShell/AMSI 우회/mshta.exe 등 Windows 전용 기술 세부사항과 함께 기술되어 있어 macOS/MacSync가 아닌 InstallFix Windows 캠페인 통계일 가능성이 높음 — 본 저장소 범위(macOS)의 확정 수치로 채택하지 않음 — ⚠️ (미검증, 채택 보류) (2026-09-23 추가)
+- Netskope AppleScript 계열 캠페인 재확인 — Netskope가 별도로 추적 중인 ClickFix→AMOS 캠페인(2026-07-28부터 추적, 감염된 WordPress 등 합법 웹사이트를 통한 가짜 "Bot Protection" 화면 유도, 12개 브라우저·200+ 확장에서 세션 쿠키 수집, 최근 스윕 감염률 37~39%)이 이번 실행 검색에서도 확인됨 — 2026-09-22 "혼동 가능성" 주의 항목과 동일 계열로 판단, 가짜 Claude 설치 페이지·MacSync 인프라와의 연결점은 여전히 미확인이라 IOC 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-23 추가)
+- 별도 Microsoft 리포트 확인 (비관련, 혼동 주의) — Microsoft가 2026-05-06 별도 게시한 "ClickFix campaign uses fake macOS utilities lures to deliver infostealers"는 가짜 macOS 유틸리티 위장 캠페인이며 가짜 Claude 설치 페이지를 다루지 않음 — 본 캠페인과 무관하여 IOC 미채택, 혼동 방지 목적으로만 기록 — (2026-09-23 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
