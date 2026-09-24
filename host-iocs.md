@@ -53,6 +53,8 @@
 - 피해자 규모 통계 (주의 — Windows/InstallFix 측 수치 가능성) — 검색 스니펫에 "15,600명 이상의 피해자 확인" 서술이 등장했으나, 동일 스니펫이 MSIX/HTA/PowerShell/AMSI 우회/mshta.exe 등 Windows 전용 기술 세부사항과 함께 기술되어 있어 macOS/MacSync가 아닌 InstallFix Windows 캠페인 통계일 가능성이 높음 — 본 저장소 범위(macOS)의 확정 수치로 채택하지 않음 — ⚠️ (미검증, 채택 보류) (2026-09-23 추가)
 - Netskope AppleScript 계열 캠페인 재확인 — Netskope가 별도로 추적 중인 ClickFix→AMOS 캠페인(2026-07-28부터 추적, 감염된 WordPress 등 합법 웹사이트를 통한 가짜 "Bot Protection" 화면 유도, 12개 브라우저·200+ 확장에서 세션 쿠키 수집, 최근 스윕 감염률 37~39%)이 이번 실행 검색에서도 확인됨 — 2026-09-22 "혼동 가능성" 주의 항목과 동일 계열로 판단, 가짜 Claude 설치 페이지·MacSync 인프라와의 연결점은 여전히 미확인이라 IOC 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-23 추가)
 - 별도 Microsoft 리포트 확인 (비관련, 혼동 주의) — Microsoft가 2026-05-06 별도 게시한 "ClickFix campaign uses fake macOS utilities lures to deliver infostealers"는 가짜 macOS 유틸리티 위장 캠페인이며 가짜 Claude 설치 페이지를 다루지 않음 — 본 캠페인과 무관하여 IOC 미채택, 혼동 방지 목적으로만 기록 — (2026-09-23 추가)
+- Kaspersky 신버전 MacSync 보도 추가 재보도 (pokde.net, brandiconimage.com) — 2026-09-17 항목과 동일한 Kaspersky 보도(인포스틸러+백도어 신버전)를 재보도하는 매체 추가 확인, 원문 모두 차단되어 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-09-24 추가)
+- InstallFix ↔ Claude Code 연관성 재보도 (hendryadrian.com, blog.7ai.com) — Trend Micro "InstallFix and Claude Code" 보도 및 AI 개발자 도구 사칭 관련 서술을 재보도하는 매체 추가 확인, 원문 모두 차단되어 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-09-24 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
