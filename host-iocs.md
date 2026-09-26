@@ -56,6 +56,7 @@
 - Kaspersky 신버전 MacSync 보도 추가 재보도 (pokde.net, brandiconimage.com) — 2026-09-17 항목과 동일한 Kaspersky 보도(인포스틸러+백도어 신버전)를 재보도하는 매체 추가 확인, 원문 모두 차단되어 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-09-24 추가)
 - InstallFix ↔ Claude Code 연관성 재보도 (hendryadrian.com, blog.7ai.com) — Trend Micro "InstallFix and Claude Code" 보도 및 AI 개발자 도구 사칭 관련 서술을 재보도하는 매체 추가 확인, 원문 모두 차단되어 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-09-24 추가)
 - MacSync 신버전 상세 — iCloud 캘린더 매개 전달 · Finder 위장 백도어 (Kaspersky 계열로 추정, 원문 전부 차단) — 신버전 MacSync가 AppleScript 기반에서 컴파일된 Objective-C/Swift 바이너리로 전환, 악성 DMG·바이너리 드로퍼 외에 iCloud 캘린더 이벤트·iCloud 파일 저장소를 매개로 페이로드를 전달한다는 서술(문서공유 앱·암호화폐 지갑 앱 등으로 위장한 최초 침투 파일 언급). 브라우저 데이터·암호화폐 지갑·Telegram 데이터·SSH/AWS/Kubernetes 설정·키체인 파일을 수집하며, Finder로 위장한 동반 백도어가 LaunchAgents, `.zshrc` 인젝션, Git hooks를 통해 지속성을 확보한다고 서술. MS-ISAC이 1,000건 이상의 IOC를 조기 공유했고 MDBR 서비스가 관련 DNS 요청 250만 건 이상을 차단했다는 통계도 언급됨. 가짜 Claude 설치 페이지·ClickFix와의 직접적 연결점은 이번 실행에서도 확인되지 않음(원문 blog.netmanageit.com, hendryadrian.com 신규글, radar.offseq.com, daily.dev, windowsforum.com 모두 프록시 차단) — ⚠️ (미검증) (2026-09-25 추가)
+- Kaspersky 1차 출처 URL 특정 (securelist.com) 및 CIS SLTT 전용 게시글 확인 — 이번 실행에서 상기 "MacSync 신버전" 서술의 원출처로 추정되는 Kaspersky Securelist 원문(`securelist.com/macsync-new-version/121383/`)과 CIS(Center for Internet Security)의 "MacSync Stealer Campaign Impacting U.S. SLTT macOS Users" 게시글을 특정했으나 둘 다 프록시 차단으로 원문 미확보. helpnetsecurity.com·technadu.com·cryptika.com 등 재보도 매체도 동일 내용을 반복 확인(신규 기술 세부사항 없음). 기존 "SLTT 표적" 미검증 서술(2026-09-17)과 부합하나 여전히 원문 미확인 — ⚠️ (미검증) (2026-09-26 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
