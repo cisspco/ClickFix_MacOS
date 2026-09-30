@@ -62,6 +62,9 @@
 - **Unit42 DMG 리포트 재확인 (2026-09-29):** `2026-06-20-ClickFix-campaign-delivers-macOS-infostealer-via-DMG.txt`를 재페치해 2026-09-19 정정 사항을 재검증 — 여전히 AMOS(Odyssey 변종) 전용이며 MacSync·가짜 Claude 설치 페이지 언급 없음. 판단 변경 없음(무관, IOC 미채택).
 - **별도 Microsoft 리포트 전체 페치 확인 (2026-05-06, 2026-09-29):** 2026-09-23에 제목만 확인했던 "ClickFix campaign uses fake macOS utilities lures to deliver infostealers"를 전체 페치. CleanMyMac/디스크 공간 분석기 등 가짜 유틸리티 위장 ClickFix로, 70개 이상의 로더·헬퍼 도메인, IP 8종, SHA-256 4건, `/tmp/helper`·`/tmp/shub_<ID>`·`~/.mainhelper`·`~/.agent`·`com.google.keystone.agent.plist` 등 LaunchAgent/스테이징 경로를 확인했으나, 원문이 "가짜 Claude 제품 사칭은 확인되지 않음"이라 명시하고 "claudecodedoc.squarespace[.]com" 도메인도 "우연한 명명이며 일반 ClickFix 안내 페이지, Claude 특정 유인 아님"이라 판단함 — 본 저장소 범위(가짜 Claude 설치 캠페인) 밖으로 확정, IOC 미채택.
 - **Microsoft 1차 출처(2026-08-18) 데이터셋 안정성 재확인 (2026-09-29):** 재페치 결과 기존 검증 도메인 31건, URI 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`), PUT/`--data-binary`, `api-key` 헤더, 업로드 파라미터(`upload_id`/`chunk_index`/`total_chunks`)와 100% 동일 — 신규 도메인/해시 없음. ThreatFox·Beelzebub·Malwarebytes(2건)·blog.7ai.com은 이번에도 차단.
+- **Microsoft 1차 출처 3연속 안정성 재확인 (2026-09-30):** 재페치 결과 다시 한 번 검증 도메인 31건 및 행동 패턴 100% 동일 — 신규 없음. ThreatFox·Beelzebub 재차 차단. 신규 시도한 securelist.com(Kaspersky "MacSync 신버전" 원문으로 추정), gbhackers.com, blog.netmanageit.com, aviatrix.ai 모두 프록시 차단으로 원문 미확보.
+- "Toria" 가짜 암호화폐 지갑 앱 배포 경로 — 검색 스니펫에 따르면 MacSync 신버전이 "Toria"라는 이름의 가짜 크립토 지갑 앱(자체 웹사이트 보유, X·Telegram에서 홍보)을 통해 유포되었다는 서술 존재(원문 미확인, 정확한 출처 도메인 불명) — 기존 "MacSync 신버전"(iCloud 캘린더 매개, 2026-09-25) 서술의 배포 벡터를 보강하나, 가짜 Claude 설치 페이지와의 연결점은 확인되지 않음 — ⚠️ (미검증) (2026-09-30 추가)
+- **주의 — 가짜 OpenAI Codex 광고 캠페인과의 구분:** The Register(2026-08-25, theregister.com, 원문 차단)가 가짜 **OpenAI Codex** 설치 안내 광고를 통해 Mac 악성코드를 유포하는 별개 캠페인을 보도. ClickFix 유사 기법을 사용하나 사칭 대상이 Claude가 아닌 OpenAI이며, 본 캠페인(MacSync/가짜 Claude 설치 페이지)과의 직접적 연결 여부는 확인되지 않음 — 혼동 방지 목적의 맥락 정보로만 기록, IOC 미채택 (2026-09-30 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
