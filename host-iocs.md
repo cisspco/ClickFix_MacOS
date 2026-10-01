@@ -23,6 +23,7 @@
 - HTTP `PUT` 메서드 + `--data-binary` 사용 (exfil 업로드) — verified (Microsoft, 2026-08-18)
 - 요청 헤더: `api-key`, macOS 계열 User-Agent 문자열 — verified (Microsoft, 2026-08-18)
 - 업로드 파라미터: `upload_id`, `chunk_index`, `total_chunks` (청크 단위 분할 업로드) — verified (Microsoft, 2026-08-18)
+- curl 플래그 `-k`, `-s`, `--max-time 30` (C2/업로드 요청 시 사용) — verified (Microsoft, 2026-08-18; 2026-10-01 재페치 본문에서 직접 확인·승격)
 
 ## 미검증 항목
 
@@ -46,6 +47,7 @@
 - 가짜 설치 안내 호스팅 플랫폼 확장 — Squarespace/Google Sites 외에도 Cloudflare Pages, Tencent EdgeOne 등 정상 호스팅 플랫폼이 가짜 설치 안내 페이지 게재에 악용되었다는 서술(검색 스니펫, 원문 미확인). 이들 플랫폼 자체는 정상 서비스이므로 차단 대상 아님 — ⚠️ (미검증) (2026-09-21 추가)
 - 실행 파일명 패턴 — 2026-01 말 캠페인에서 "helper" 또는 "update"라는 이름의 실행 파일이 사용되었다는 서술(검색 스니펫, 원문 미확인) — ⚠️ (미검증) (2026-09-21 추가)
 - curl 플래그 세부사항 — 이차 출처(검색 스니펫)에 따르면 Microsoft가 연결한 인프라의 curl 명령에 `-k`, `-s`, `--max-time` 플래그 사용이 언급됨. 금일 Microsoft 원문 재페치 결과에는 해당 플래그가 명시적으로 나타나지 않아 원문 직접 확인은 안 됨 — 기존 verified 항목(`--data-binary`, `PUT`)에 대한 보강 서술로만 기록 — ⚠️ (미검증) (2026-09-21 추가)
+  - **승격 (2026-10-01):** 위 curl 플래그(`-k`, `-s`, `--max-time 30`) 서술이 이번 실행의 Microsoft(2026-08-18) 원문 재페치 본문에서 "Notable URI Patterns & HTTP Details" 항목으로 직접 확인되어 verified로 승격 — 네트워크/C2 통신 패턴 섹션에 반영.
 - InstallFix ↔ Claude Code 연관성 강화 — Trend Micro 보고서 제목("InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise")이 InstallFix 캠페인과 가짜 Claude Code 설치 페이지를 명시적으로 연결. 원문은 이번 실행에서도 차단되어 세부 IOC(특히 macOS측)는 미확인 — ⚠️ (미검증) (2026-09-21 추가)
 - **주의 — AppleScript 가짜 시스템 프롬프트 계열 캠페인과의 혼동 가능성:** Netskope 등이 보고한 별개의 macOS ClickFix 캠페인은 AppleScript 대화상자로 가짜 시스템 암호 프롬프트를 반복 표시해 자격증명을 탈취하고, 14개 브라우저·16개 암호화폐 지갑·200개 이상 확장 프로그램에서 세션 쿠키를 수집한다고 서술됨(검색 스니펫, 원문 미확인). 가짜 Claude 설치 페이지·MacSync와의 연결점은 확인되지 않아 본 저장소 IOC로 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-22 추가)
 - Kaspersky 신버전 MacSync 보도 추가 확산 — IT-Online(2026-09-21)이 동일한 Kaspersky MacSync 신버전(인포스틸러+백도어) 보도를 재보도. 2026-09-17 항목 대비 새로운 기술적 세부사항 없음(원문 접근 차단) — ⚠️ (미검증) (2026-09-22 추가)
@@ -65,6 +67,9 @@
 - **Microsoft 1차 출처 3연속 안정성 재확인 (2026-09-30):** 재페치 결과 다시 한 번 검증 도메인 31건 및 행동 패턴 100% 동일 — 신규 없음. ThreatFox·Beelzebub 재차 차단. 신규 시도한 securelist.com(Kaspersky "MacSync 신버전" 원문으로 추정), gbhackers.com, blog.netmanageit.com, aviatrix.ai 모두 프록시 차단으로 원문 미확보.
 - "Toria" 가짜 암호화폐 지갑 앱 배포 경로 — 검색 스니펫에 따르면 MacSync 신버전이 "Toria"라는 이름의 가짜 크립토 지갑 앱(자체 웹사이트 보유, X·Telegram에서 홍보)을 통해 유포되었다는 서술 존재(원문 미확인, 정확한 출처 도메인 불명) — 기존 "MacSync 신버전"(iCloud 캘린더 매개, 2026-09-25) 서술의 배포 벡터를 보강하나, 가짜 Claude 설치 페이지와의 연결점은 확인되지 않음 — ⚠️ (미검증) (2026-09-30 추가)
 - **주의 — 가짜 OpenAI Codex 광고 캠페인과의 구분:** The Register(2026-08-25, theregister.com, 원문 차단)가 가짜 **OpenAI Codex** 설치 안내 광고를 통해 Mac 악성코드를 유포하는 별개 캠페인을 보도. ClickFix 유사 기법을 사용하나 사칭 대상이 Claude가 아닌 OpenAI이며, 본 캠페인(MacSync/가짜 Claude 설치 페이지)과의 직접적 연결 여부는 확인되지 않음 — 혼동 방지 목적의 맥락 정보로만 기록, IOC 미채택 (2026-09-30 추가)
+- 공유된 Claude 대화(chat) 링크 유인 벡터 — macOS 특정 명시 소스 추가 확인 (Rescana, Zscaler) — Rescana의 보도 제목이 "Claude LLM Artifacts Exploited to Distribute **Mac** Infostealer Malware via ClickFix Attack Chain **Targeting macOS Users**"로 명시적으로 macOS를 특정하고, Zscaler가 별도로 "ClaudeFix: Shared Claude Chats Meet ClickFix"를 보도함을 확인 — 2026-09-20에 기록한 "공유된 Claude 대화 링크 유인 벡터"(당시 cybersecuritynews.com 단일 출처, 원문 차단) 서술을 두 개의 독립 매체가 추가로 보강하나, 두 원문(rescana.com, zscaler.com) 모두 이번 실행에서 프록시 차단되어 직접 확인은 안 됨 — ⚠️ (미검증, 다중 출처로 신뢰도 상승) (2026-10-01 추가)
+- 서명된 변종 재보도 (cybersecuritynews.com) — "New MacSync Stealer Uses Signed macOS App to Evade Gatekeeper and Steal Data"라는 제목을 신규 확인, 2026-09-17에 기록한 "서명된 변종(코드사이닝 우회 변화)" 서술과 일치 — 원문은 차단 목록(cybersecuritynews.com)에 포함되어 직접 확인 안 됨, 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-10-01 추가)
+- **주의 — 신규 후보 도메인 (다른 유인 경로, 범위 불확실):** WebSearch 합성 요약(복수의 차단된 1차 출처 — bleepingcomputer.com, securelist.com, netmanageit.com, aviatrix.ai, cybersecuritynews.com 등을 인용)에서 MacSync 신버전(iCloud 캘린더 매개, 2026-09-25 기록)의 구체적 배포 URL로 다음 후보가 언급됨: `toria[.]app`, `warpcast[.]asia/Toria.dmg`, `streamyard.appstore.com[.]mx/installer.sh`, `slack.apple03cloudstore[.]com/installer.sh`. 이들은 가짜 크립토 지갑(Toria)·가짜 StreamYard/Slack 설치 스크립트로, 가짜 **Claude** 설치 페이지와는 다른 유인(lure)이며, 어떤 원문에서도 가짜 Claude 설치 페이지와의 직접적 연결이 확인되지 않음 — 말웨어 패밀리(MacSync)는 동일하나 유인 경로가 본 캠페인 범위(가짜 Claude 설치 사칭)인지 불확실. 또한 출처가 특정 기사 본문 인용이 아닌 검색엔진 합성 요약이라 개별 도메인-출처 대응 관계도 불명확 — 매우 낮은 신뢰도의 미검증 후보로만 기록, `blocklists/unverified-domains.txt`에 참고용으로만 추가, 차단 금지 — ⚠️ (미검증, 범위/신뢰도 모두 불확실) (2026-10-01 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
