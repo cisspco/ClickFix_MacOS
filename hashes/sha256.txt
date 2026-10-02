@@ -1,0 +1,1 @@
+2728a7d444cd65550f652a8c66eaced0fe6d0389161f86393ab73da8f446a362	Stage 2 zsh loader (MacSync, 추정)	unverified
