@@ -1,15 +1,15 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-03 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-04 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft(2026-08-18) — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: seqrite.com, cyderes.com, gblock.app, socprime.com, trendmicro.com
+- 추가 페치 차단: rapid7.com, scworld.com, securityonline.info, ground.news, securelist.com
 - seed: 호스트 IOC 다수 / 검증: 도메인 31 / 미검증: 도메인 7, 해시 1
 
 ## 캠페인 개요
 가짜 Claude Desktop/Claude Code 설치 페이지(검색광고)를 통한 ClickFix 기법으로 사용자가 터미널에 명령을 직접 붙여넣게 유도하고, 아키텍처에 맞는 악성 Mach-O를 다운로드·실행. MacSync 모듈이 Chromium계·Firefox·Safari 쿠키·프로파일을 수집해 외부로 유출. 탈취된 세션 쿠키로 기존 로그인 재사용 가능.
 
-**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 기존 검증 도메인 31건 및 행동 패턴(URI `/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT/`--data-binary`, 업로드 파라미터)이 동일함을 재확인했다. ThreatFox·Beelzebub은 이번에도 차단. Step 2 검색에서 신규 C2 후보 도메인 `focusgroovy[.]com`(MS-ISAC/CIS 계열로 추정되는 합성 요약, "추가 페이로드를 가져오는 C2 서버"로 언급)을 신규 확인 — 검색 스니펫만으로 확인되어 미검증으로만 등록. 또한 가짜 Claude 설치 페이지와 직접 연관된 것으로 보이는 신규 1차 출처 제목 5건(Seqrite, Cyderes, gblock.app, SOC Prime, Trend Micro 직접 URL)을 특정해 페치를 시도했으나 전부 프록시 차단으로 원문 미확보 — 신규 기술 세부사항(해시/IP) 없음. SecurityWeek가 보도한 "CloudSyncD" 백도어(가짜 Zoom 설치 프로그램 경유)는 별개 악성코드·별개 유인으로 판단해 혼동 방지용 맥락 정보로만 기록, IOC 미채택.
+**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 기존 검증 도메인 31건과 URI/HTTP 행동 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT/`--data-binary`, `api-key` 헤더, `upload_id`/`chunk_index`/`total_chunks`)이 또 동일함을 재확인했다(4연속 안정). ThreatFox·Beelzebub은 이번에도 차단. Step 2 검색에서 신규 1차 출처 제목 3건(Rapid7 "ClickFix-style Phishing Campaign Uses Fake Claude Installer" — 제목상 본 캠페인과 직접 연관, SC World "ClickFix campaigns target macOS users via MacSync infostealer", securityonline.info "AI Hype Hijacked: How a Fake Claude Installer Blinds Windows Security" — 제목상 Windows 측 캠페인일 가능성)을 특정해 페치를 시도했으나 전부 프록시 차단으로 원문 미확보. securelist.com(Kaspersky 1차 출처)·ground.news(IT-Online 재보도 집계)도 재시도했으나 계속 차단. 검색 스니펫에서 기존 미검증 항목 focusgroovy[.]com의 발견 주체가 "Jamf"로 특정된 것을 신규 확인(기존에는 "MS-ISAC/CIS 계열 추정"으로만 기록) — 원문 미확인 상태로 provenance는 미검증 유지, host-iocs.md에 출처 세부사항만 보강. 그 외 기존에 이미 기록된 toria[.]app, warpcast[.]asia, streamyard.appstore.com[.]mx 등 미검증 후보는 동일 검색 스니펫에서 재확인되었을 뿐 신규 변경 없음.
 
 ## 공격 체인
 1. 가짜 설치 페이지 유도 (검색광고) — "Claude Code", "Claude Code install", "Claude Code CLI" 등 검색 시 노출되는 스폰서 링크로 유도 (⚠️ 미검증, 타 벤더 스니펫 기반)
@@ -53,7 +53,7 @@
 - wvaeagent[.]com — C2/행동 피벗 식별 인프라 — verified (Microsoft, 2026-08-18)
 
 ## 미검증 후보 인프라 (차단 금지) (7)
-- focusgroovy[.]com — C2 후보, "추가 페이로드를 가져오는 서버"로 언급 (MS-ISAC/CIS 계열 추정, 검색 합성 요약, 원문 미특정) — ⚠️ (미검증) (2026-10-03 추가)
+- focusgroovy[.]com — C2 후보, "추가 페이로드를 가져오는 C2 서버"로 언급. 금일 검색 스니펫에서 발견 주체가 Jamf로 특정됨(원문 미확인) — ⚠️ (미검증)
 - houstongaragedoorinstallers[.]com — C2 후보 (RST Cloud 계열, 검색 스니펫, 원문 차단) — ⚠️ (미검증)
 - jacksonvillemma[.]com — C2 후보, URL `/curl/<sha256>` 패턴이 Microsoft 검증 URI 패턴과 일치 (MS-ISAC/RST Cloud 계열 추정, 검색 합성 요약, 원문 미특정) — ⚠️ (미검증)
 - toria[.]app — MacSync 신버전(가짜 크립토 지갑 "Toria") 배포 사이트 후보 — 가짜 Claude 설치 페이지와 무관 가능성, 검색 합성 요약만 — ⚠️ (미검증, 범위 불확실)
@@ -68,14 +68,14 @@
 참고(본 저장소 스키마 밖, SHA-256 외 해시): MD5 `277acd8e241c1341852ebcd401203ecc`, SHA-1 `7d28507870e94b809f25883dc9dae838549ddfac` — 동일 로더로 추정, `host-iocs.md`에만 기록.
 
 ## 호스트 IOC · 행위 (누적)
-상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: focusgroovy[.]com 관련 미검증 노트, 신규 온토픽 보고서 제목 5건(전부 차단), CloudSyncD 혼동 방지 노트.
+상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: focusgroovy[.]com 발견 주체(Jamf) 출처 세부사항 보강, 신규 온토픽 보고서 제목 3건(전부 차단).
 
 ## 이번 실행 변경사항
-- 신규 인프라: 없음 (검증 블록리스트 기준). 미검증 블록리스트에 focusgroovy[.]com 1건 추가
+- 신규 인프라: 없음
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: Seqrite("MacSync: The Evasive macOS Stealer Exploiting ClickFix Lures", 차단), Cyderes("Bad Ads, Worse Binaries: Fake Claude Code Installer Drops Infostealer", 차단), gblock.app("MacSync iCloud Calendar C2", 차단), SOC Prime("ClickFix Phishing Campaign Disguised as a Claude Installer", 차단), Trend Micro 원문 직접 URL 특정("InstallFix and Claude Code", 차단), SecurityWeek("CloudSyncD" 가짜 Zoom 설치 프로그램 — 혼동 방지용 맥락 정보, IOC 미채택)
+- 신규 보고서: Rapid7("ClickFix-style Phishing Campaign Uses Fake Claude Installer", 차단), SC World("ClickFix campaigns target macOS users via MacSync infostealer", 차단), securityonline.info("AI Hype Hijacked: How a Fake Claude Installer Blinds Windows Security" — 제목상 Windows 캠페인 추정, 차단)
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -129,9 +129,9 @@ wvaeagent.com
 - [Hunting MacSync Stealer infrastructure through behavioral pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC #1893641](https://threatfox.abuse.ch/ioc/1893641/) — 미상 — blocked
 - [Beelzebub — MacSync Stealer / fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 미상 — blocked
-- [Seqrite — MacSync: The Evasive macOS Stealer Exploiting ClickFix Lures](https://www.seqrite.com/blog/macsync-the-evasive-macos-stealer-exploiting-clickfix-lures/) — 미상 — blocked
-- [Cyderes — Bad Ads, Worse Binaries: Fake Claude Code Installer Drops Infostealer](https://www.cyderes.com/howler-cell/fake-claude-code-installer-infostealer) — 미상 — blocked
-- [gblock.app — MacSync Malware Hides Commands in Public iCloud Calendars](https://www.gblock.app/articles/macsync-icloud-calendar-c2-kaspersky-2026) — 미상 — blocked
-- [SOC Prime — ClickFix Phishing Campaign Disguised as a Claude Installer](https://socprime.com/active-threats/clickfix-phishing-campaign-disguised-as-a-claude-installer/) — 미상 — blocked
-- [Trend Micro — InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise](https://www.trendmicro.com/en_us/research/26/e/installfix-and-claude-code.html) — 미상 — blocked
+- [Rapid7 — ClickFix-style Phishing Campaign Uses Fake Claude Installer](https://www.rapid7.com/blog/post/ve-clickfix-phishing-campaign-fake-claude-installer/) — 미상 — blocked
+- [SC World — ClickFix campaigns target macOS users via MacSync infostealer](https://www.scworld.com/news/clickfix-campaigns-target-macos-users-via-macsync-infostealer) — 미상 — blocked
+- [securityonline.info — AI Hype Hijacked: How a Fake Claude Installer Blinds Windows Security](https://securityonline.info/fake-claude-ai-installer-clickfix-malware-analysis/) — 미상 — blocked
+- [ground.news — New Version of MacSync Hits macOS Users](https://ground.news/article/macsync-infiltrates-macs-targeting-crypto-wallets-and-passwords) — 미상 — blocked
+- [Securelist (Kaspersky) — A new version of the MacSync macOS stealer targets crypto enthusiasts and developers](https://securelist.com/macsync-new-version/121383/) — 미상 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — seed(advisory)
