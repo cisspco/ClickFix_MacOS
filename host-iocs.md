@@ -81,6 +81,8 @@
 - focusgroovy[.]com 발견 주체 세부사항 보강 — 금일 검색 스니펫에서 해당 C2 후보 도메인을 Jamf가 식별했다는 서술을 신규 확인(기존에는 "MS-ISAC/CIS 계열 추정"으로만 기록). 원문(Jamf 블로그 등) 미특정·미페치로 provenance는 미검증 유지, 출처 주체 정보만 보강 — ⚠️ (미검증) (2026-10-04 추가)
 - 신규 온토픽 보고서 제목 확인 (원문 전부 차단) — Rapid7("ClickFix-style Phishing Campaign Uses Fake Claude Installer" — 제목상 본 캠페인과 직접 연관된 1차 출처로 추정), SC World("ClickFix campaigns target macOS users via MacSync infostealer"), securityonline.info("AI Hype Hijacked: How a Fake Claude Installer Blinds Windows Security" — 제목상 Windows측 InstallFix 캠페인일 가능성)을 신규로 특정·페치 시도했으나 3건 모두 프록시 차단 — 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-10-04 추가)
 - Securelist(Kaspersky) 1차 출처 URL 재시도 — `securelist.com/macsync-new-version/121383/` 재페치 시도, 이번에도 프록시 차단(2026-09-26 이후 지속) — 신규 없음 (2026-10-04)
+- **Microsoft 1차 출처(2026-08-18) 데이터셋 7일 연속 안정성 재확인 (2026-10-05):** 재페치 결과 검증 도메인 30건(원문 자체가 "30+ domains"로 표현, 본 저장소 집계 30건과 일치) 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, User-Agent, `upload_id`/`chunk_index`/`total_chunks`)이 2026-09-29부터 오늘까지 7회 연속 100% 동일 — 신규 도메인/해시/IP 없음. 원문은 이번에도 IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인을 제공하지 않음을 재확인. ThreatFox·Beelzebub은 7일 연속 차단.
+- 신규 온토픽 보고서 제목 확인 (원문 전부 차단 또는 미시도) — cybersecuritynews.com(차단 목록) 신규 제목 2건: "Hackers Use Fake Claude and ChatGPT Installers to Infect Mac Users With Password-Stealing Malware", "Hackers Abuse Shared Claude Chats and Google Ads to Deploy MacSync Stealer on macOS" (둘 다 제목상 본 캠페인과 직접 연관된 1차 보도로 추정); cyberpress.org(기존 차단 확인됨) "Fake Claude AI Installer Pages Trick Users Into Malware Downloads". 신규로 foxnews.com, tech.yahoo.com(둘 다 MacSync iCloud 캘린더 재보도) 페치를 시도했으나 둘 다 프록시 차단으로 신규 차단 도메인 목록에 추가 확인 — 신규 기술 세부사항 없음 — ⚠️ (미검증) (2026-10-05 추가)
 
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
