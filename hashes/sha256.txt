@@ -1,1 +1,3 @@
+1abf943e97356e07bde23663da544e7c106afc19827a2106361a52035737de43	트로이목마화된 Ledger Live 앱 (크립토 지갑)	unverified
 2728a7d444cd65550f652a8c66eaced0fe6d0389161f86393ab73da8f446a362	Stage 2 zsh loader (MacSync, 추정)	unverified
+bd348a40261aa2d95566ccdc4e6f304ff25aa97d34e5c713c77c937583ad04f0	MacSync Stealer v1.1.2 드로퍼 (build tag "claude1")	unverified
