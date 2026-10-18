@@ -1,21 +1,21 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-17 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-18 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft(2026-08-18) — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: securityarsenal.com, trendmicro.com, hackmag.com, sophos.com, bleepingcomputer.com (전부 기존 차단 목록에 포함된 도메인 재시도)
+- 추가 페치 차단: cert.gov.az, www.trendmicro.com, securityarsenal.com, www.sophos.com, socprime.com (전부 DNS 조회 실패; 전부 기존에 이미 차단으로 확인된 도메인 재시도)
 - seed: 호스트 IOC 다수 / 검증: 도메인 31 / 미검증: 도메인 14, IP 1, 해시 3
 
 ## 캠페인 개요
 가짜 Claude Desktop/Claude Code 설치 페이지(검색광고)를 통한 ClickFix 기법으로 사용자가 터미널에 명령을 직접 붙여넣게 유도하고, 아키텍처에 맞는 악성 Mach-O를 다운로드·실행. MacSync 모듈이 Chromium계·Firefox·Safari 쿠키·프로파일을 수집해 외부로 유출. 탈취된 세션 쿠키로 기존 로그인 재사용 가능.
 
-**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 검증 도메인 31건 및 호스트/네트워크 패턴이 19회 연속 100% 동일함을 재확인했다. ThreatFox·Beelzebub은 19일 연속 DNS 차단. 신규로 시도한 securityarsenal.com(크립토 드레이닝 Mach-O 페이로드 분석), trendmicro.com(InstallFix/Claude Code 원문), hackmag.com(Claude Artifacts 악용 보도), sophos.com(Evil Evolution 보도), bleepingcomputer.com("Adception" 1차 보도) 5건 모두 DNS 조회 실패로 원문을 확보하지 못했으며, 전부 기존에 이미 차단으로 확인된 도메인이라 신규 차단 도메인 추가는 없다. 검색 스니펫에서 9to5mac.com(2026-07, macOS ClickFix 캠페인 — 기존 파일리스/인메모리 실행 서술과 부합하는 재인용 추정)과 uvcyber.com(2026-03-17, ClickFix 위협 권고 PDF)를 신규 제목으로 확인했으나 원문은 이번 실행 페치 예산(8건) 소진으로 시도하지 못했다. 신규 도메인/IP/해시 등재나 미검증→검증 승격은 없었다 — 조용한 하루.
+**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 검증 도메인 31건 및 호스트/네트워크 패턴이 20회 연속 100% 동일함을 재확인했다. ThreatFox·Beelzebub은 20일 연속 DNS 차단. 신규로 시도한 cert.gov.az("Warning for Mac users: fake Claude AI application" — 제목상 유망한 1차 출처), www.trendmicro.com(InstallFix/Claude Code 원문, en_us 변형 URL), securityarsenal.com(MacSync 행동 피벗/C2 헌팅 가이드, 구체 URL 특정), www.sophos.com(Evil Evolution, en-us 변형 URL), socprime.com(회전 C2 인프라 영문 액티브 스레트 페이지) 총 5건 모두 DNS 조회 실패로 원문을 확보하지 못했다 — 전부 이전 실행에서 이미 차단으로 확인된 도메인의 재시도(신규 차단 도메인 없음). WebSearch에서는 cert.gov.az 관련 서술("MacSync Stealer v1.1.2, build tag 'claude1'", 드로퍼 SHA-256, 트로이목마화 Ledger Live SHA-256, C2 `oklahomawarehousing.com`, URL 패턴 `/dynamic`·`/gate`·`/curl`·`/ledger/live`, 가짜 설치 페이지 `sites.google.com`)과 Trend Micro InstallFix(Windows측 mshta.exe/AMSI 우회/예약 작업 지속성, 국가 연계 추정, Adception 변종으로 macOS 확장) 세부사항이 재확인됐으나, 전부 기존 `host-iocs.md`에 이미 기록된 미검증 항목과 일치해 신규 등재나 승격은 없었다. "cksyncd" 호스트 아티팩트는 이번 검색에서도 외부 보고서에서 전혀 확인되지 않아 seed 전용 상태를 유지한다 — 조용한 하루.
 
 ## 공격 체인
-1. 가짜 설치 페이지 유도 (검색광고) — "claude mac" 등 검색 시 Google 스폰서 광고 노출. "Adception" 변종(⚠️ 미검증)은 표면 도메인으로 `bing.com`을 표시해 Bing 리디렉션 후 클로킹된 침해 WordPress 사이트를 경유, 가짜 다운로드 페이지 `claude-desk-code[.]com`(⚠️ 미검증)에 도달. 별개 변종으로 추정되는 `cladesktop.gitlab[.]io` / `cladesktop-apps[.]com`(⚠️ 미검증)도 가짜 Claude 다운로드 페이지로 식별됨. 추가로 공개 Claude 대화 artifact에 악성 명령을 직접 게시하거나 Medium 가짜 Apple 지원 페이지를 경유하는 별개 유인 경로도 언급됨(⚠️ 미검증)
-2. 터미널 명령 복사·붙여넣기 유도 — ClickFix 기법; 일부 변종은 화면 표시 명령과 클립보드 주입 명령이 다름(⚠️ 미검증); 이메일 링크→가짜 CAPTCHA 경로도 미검증 서술로 존재(⚠️ 미검증) (T1204.004)
+1. 가짜 설치 페이지 유도 (검색광고) — "claude mac" 등 검색 시 Google 스폰서 광고 노출. "Adception" 변종(⚠️ 미검증)은 표면 도메인으로 `bing.com`을 표시해 Bing 리디렉션 후 클로킹된 침해 WordPress 사이트를 경유, 가짜 다운로드 페이지 `claude-desk-code[.]com`(⚠️ 미검증)에 도달. 별개 변종으로 추정되는 `cladesktop.gitlab[.]io` / `cladesktop-apps[.]com`(⚠️ 미검증)도 가짜 Claude 다운로드 페이지로 식별됨. 추가로 공개 Claude 대화 artifact에 악성 명령을 직접 게시하거나 Medium 가짜 Apple 지원 페이지를 경유하는 별개 유인 경로, `sites.google.com/view/claud-version-0505` 공유 URL도 언급됨(⚠️ 미검증)
+2. 터미널 명령 복사·붙여넣기 유도 — ClickFix 기법; 일부 변종은 화면 표시 명령과 클립보드 주입 명령이 다름(⚠️ 미검증) (T1204.004)
 3. Mach-O 다운로드 · Gatekeeper 우회 — curl이 `lake-90[.]com`(⚠️ 미검증) 또는 `arkypc[.]com`(⚠️ 미검증)에서 페이로드 수신 후 zsh 파이프 실행; `xattr -rd com.apple.quarantine` 후 `codesign --force --sign -`로 애드혹 재서명. 일부 변종은 정식 서명·공증 샘플 사용(⚠️ 미검증 — Apple이 인증서 신고 후 해지)
-4. 지속성 (cksyncd) — `~/Library/Application Support/.com.apple.airport/cksyncd` 등 위장 경로, `/tmp/sync*`·`/tmp/osalogging.zip` 스테이징(verified, Microsoft); 실행 시 Terminal 앱을 먼저 종료해 활동 은닉, XOR 난독화·프로세스 데몬화·포렌식 아티팩트 신속 제거(⚠️ 미검증)
+4. 지속성 (cksyncd) — `~/Library/Application Support/.com.apple.airport/cksyncd` 등 위장 경로(seed, 외부 보고서 미확인 지속), `/tmp/sync*`·`/tmp/osalogging.zip` 스테이징(verified, Microsoft); 실행 시 Terminal 앱을 먼저 종료해 활동 은닉, XOR 난독화·프로세스 데몬화·포렌식 아티팩트 신속 제거(⚠️ 미검증)
 5. 브라우저 정보 탈취 (MacSync) — `--user-data-dir=<...cksync...>` 프로파일로 Chromium 실행, Firefox/Safari 데이터도 수집; 신버전(v1.1.2, build "claude1"/"symbiot")은 가짜 비밀번호 프롬프트와 크립토 지갑 앱(Ledger Live 등) 트로이목마화도 포함 (⚠️ 미검증)
 6. 외부 유출 · 세션 재사용 위험 — HTTP PUT + `--data-binary`, 청크 업로드(`upload_id`/`chunk_index`/`total_chunks`)로 C2에 전송; 경로 `/curl`, `/dynamic`, `/gate` (verified), `/ledger/live` (⚠️ 미검증). 정적 `api-key` 헤더 값이 4개 확인된 C2 도메인에서 공유됨(verified)
 
@@ -80,7 +80,7 @@
 참고(본 저장소 스키마 밖, SHA-256 외 해시): MD5 `277acd8e241c1341852ebcd401203ecc`, SHA-1 `7d28507870e94b809f25883dc9dae838549ddfac` — Stage 2 zsh 로더와 동일 추정, `host-iocs.md`에만 기록.
 
 ## 호스트 IOC · 행위 (누적)
-상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: Microsoft 데이터셋 19일 연속 안정성 재확인. 그 외 신규 기술 세부사항 없음(조용한 하루).
+상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: Microsoft 데이터셋 20일 연속 안정성 재확인. 그 외 신규 기술 세부사항 없음(조용한 하루).
 
 ## 이번 실행 변경사항
 - 신규 인프라: 없음
@@ -141,9 +141,9 @@ wvaeagent.com
 - [Hunting MacSync Stealer infrastructure through behavioral pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC #1893641](https://threatfox.abuse.ch/ioc/1893641/) — 미상 — blocked
 - [Beelzebub — MacSync Stealer / fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 미상 — blocked
-- [Security Arsenal — MacSync Stealer ClickFix campaign, fake CAPTCHA, crypto-draining Mach-O payloads (OTX pulse analysis)](https://securityarsenal.com/blog/macsync-stealer-clickfix-campaign-fake-captcha-terminal-commands-deploy-crypto-draining-mach-o-payloads-otx-pulse-analysis-and-detection-pack) — 미상 — blocked
-- [Trend Micro — InstallFix and Claude Code](https://www.trendmicro.com/en_gb/research/26/e/installfix-and-claude-code.html) — 미상 — blocked
-- [HackMag — Hackers Are Using Claude Artifacts to Distribute macOS Malware](https://hackmag.com/news/claude-malware) — 미상 — blocked
-- [Sophos — Evil evolution: ClickFix and macOS infostealers](https://www.sophos.com/en-us/blog/evil-evolution-clickfix-and-macos-infostealers) — 2026-03 — blocked
-- [BleepingComputer — Hackers abuse Google ads, Bing redirects to push Claude ClickFix attacks ("Adception")](https://www.bleepingcomputer.com/news/security/hackers-abuse-google-ads-bing-redirects-to-push-claude-clickfix-attacks/) — 2026-10-09 — blocked
+- [CERT.az — Warning for Mac users: fake Claude AI application targets user information](https://cert.gov.az/en/news/warning-for-mac-users-fake-claude-ai-application-targets-user-information) — 미상 — blocked (DNS)
+- [Trend Micro — InstallFix and Claude Code](https://www.trendmicro.com/en_us/research/26/e/installfix-and-claude-code.html) — 미상 — blocked (DNS)
+- [Security Arsenal — MacSync Stealer: Hunting macOS Infostealer C2 Infrastructure With Behavioral Pivots](https://securityarsenal.com/blog/macsync-stealer-hunting-macos-infostealer-c2-infrastructure-with-behavioral-pivots-detection-and-response-guide) — 미상 — blocked (DNS)
+- [Sophos — Evil evolution: ClickFix and macOS infostealers](https://www.sophos.com/en-us/blog/evil-evolution-clickfix-and-macos-infostealers) — 2026-03 — blocked (DNS)
+- [SOC Prime — MacSync Stealer uses rotating C2 infrastructure](https://socprime.com/active-threats/macsync-stealer-uses-rotating-c2-infrastructure/) — 미상 — blocked (DNS)
 - FSEC(금융보안원) 2026-09 보안 권고 — seed(advisory)
