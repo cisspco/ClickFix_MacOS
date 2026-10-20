@@ -1,15 +1,15 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-19 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-20 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft(2026-08-18) — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: kb.gajshield.com, moonlock.com, everywan.com, undercodetesting.com, 9to5mac.com (전부 DNS 조회 실패; kb.gajshield.com·moonlock.com·everywan.com는 기존에 이미 차단으로 확인된 도메인 재시도, undercodetesting.com·9to5mac.com은 신규 시도)
+- 추가 페치 차단: uvcyber.com (ThreatAdvisory-MacOS-Clickfix-Risks PDF, DNS 조회 실패, 신규 시도)
 - seed: 호스트 IOC 다수 / 검증: 도메인 31 / 미검증: 도메인 14, IP 1, 해시 3
 
 ## 캠페인 개요
 가짜 Claude Desktop/Claude Code 설치 페이지(검색광고)를 통한 ClickFix 기법으로 사용자가 터미널에 명령을 직접 붙여넣게 유도하고, 아키텍처에 맞는 악성 Mach-O를 다운로드·실행. MacSync 모듈이 Chromium계·Firefox·Safari 쿠키·프로파일을 수집해 외부로 유출. 탈취된 세션 쿠키로 기존 로그인 재사용 가능.
 
-**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 검증 도메인 31건 및 호스트/네트워크 패턴이 21일 연속 100% 동일함을 재확인했다. ThreatFox·Beelzebub은 21일 연속 DNS 차단. WebSearch 5건(MacSync IOC 10월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)을 수행했으나 모두 기존에 이미 기록된 서술(Adception 변종, InstallFix/Trend Micro, Sophos "Evil evolution", MacSync 빌드 태그 "claude1"/"symbiot", 250+ 도메인 서술 등)의 재인용이거나, 별개 캠페인(ChatGPT 사칭 Sophos 3단계 캠페인, Netskope AppleScript 계열, Shamos/Gimmick/Cuckoo 등 무관 패밀리)으로 확인되어 신규 채택 항목 없음. 신규로 시도한 kb.gajshield.com(Microsoft "250+ 도메인" 서술 1차 출처 재시도), moonlock.com·everywan.com(기존 차단 재확인), undercodetesting.com("MacSync Mayhem" 신규 매체), 9to5mac.com(2026-07 변종 신규 매체) 총 5건 모두 DNS 조회 실패로 원문 미확보 — undercodetesting.com·9to5mac.com이 신규 차단 도메인으로 추가 확인됨. "cksyncd" 호스트 아티팩트는 이번 검색에서도 외부 보고서에서 전혀 확인되지 않아 seed 전용 상태를 유지한다 — 21일 연속 조용한 하루.
+**금일 조사 메모:** Microsoft(2026-08-18) 원문을 재페치해 검증 도메인 31건 및 호스트/네트워크 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, User-Agent, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 22일 연속 100% 동일함을 재확인했다. 원문은 이번에도 IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인을 제공하지 않음을 재확인. ThreatFox·Beelzebub은 22일 연속 DNS 차단. WebSearch 5건(MacSync IOC 10월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)을 수행했으나 모두 기존에 이미 기록된 서술(cert.gov.az의 "claude1" 빌드·Ledger Live 트로이목마 해시·`oklahomawarehousing.com`·`/ledger/live` 경로·`sites.google.com/view/claud-version-0505`, InstallFix/Trend Micro, "Adception"(`claude-desk-code.com`/`lake-90.com`), Sophos "Evil evolution" 3단계 캠페인, Claude Artifacts 악용(Hackmag/Moonlock), Microsoft "250+ 도메인" 서술)의 재인용이거나, 별개 캠페인(Netskope AppleScript 계열, Gimmick/Cuckoo/Shamos 등 무관 패밀리)으로 확인되어 신규 채택 항목 없음. 신규로 시도한 uvcyber.com(2026-03-17자 ThreatAdvisory PDF, macOS ClickFix 전반 다룰 것으로 추정) 1건은 DNS 조회 실패로 원문 미확보 — 신규 차단 도메인으로 추가. "cksyncd" 호스트 아티팩트는 이번 검색에서도 외부 보고서에서 전혀 확인되지 않아 seed 전용 상태를 유지한다 — 22일 연속 조용한 하루.
 
 ## 공격 체인
 1. 가짜 설치 페이지 유도 (검색광고) — "claude mac" 등 검색 시 Google 스폰서 광고 노출. "Adception" 변종(⚠️ 미검증)은 표면 도메인으로 `bing.com`을 표시해 Bing 리디렉션 후 클로킹된 침해 WordPress 사이트를 경유, 가짜 다운로드 페이지 `claude-desk-code[.]com`(⚠️ 미검증)에 도달. 별개 변종으로 추정되는 `cladesktop.gitlab[.]io` / `cladesktop-apps[.]com`(⚠️ 미검증)도 가짜 Claude 다운로드 페이지로 식별됨. 추가로 공개 Claude 대화 artifact에 악성 명령을 직접 게시하거나 Medium 가짜 Apple 지원 페이지를 경유하는 별개 유인 경로, `sites.google.com/view/claud-version-0505` 공유 URL도 언급됨(⚠️ 미검증)
@@ -80,14 +80,14 @@
 참고(본 저장소 스키마 밖, SHA-256 외 해시): MD5 `277acd8e241c1341852ebcd401203ecc`, SHA-1 `7d28507870e94b809f25883dc9dae838549ddfac` — Stage 2 zsh 로더와 동일 추정, `host-iocs.md`에만 기록.
 
 ## 호스트 IOC · 행위 (누적)
-상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: Microsoft 데이터셋 21일 연속 안정성 재확인. 그 외 신규 기술 세부사항 없음(조용한 하루).
+상세는 [`host-iocs.md`](../host-iocs.md) 참조 (경로/명령/네트워크 패턴/대응 권고 전체 누적 문서). 금일 신규: Microsoft 데이터셋 22일 연속 안정성 재확인. 그 외 신규 기술 세부사항 없음(조용한 하루).
 
 ## 이번 실행 변경사항
 - 신규 인프라: 없음
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (신규 시도 5건 전부 차단; undercodetesting.com·9to5mac.com은 신규 차단 도메인으로 확인, 나머지 3건은 기존 차단 재확인)
+- 신규 보고서: 없음 (신규 시도 1건 차단: uvcyber.com)
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -141,9 +141,5 @@ wvaeagent.com
 - [Hunting MacSync Stealer infrastructure through behavioral pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC #1893641](https://threatfox.abuse.ch/ioc/1893641/) — 미상 — blocked
 - [Beelzebub — MacSync Stealer / fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 미상 — blocked
-- [GajShield KB — Over 250 ClickFix domains use browser fingerprinting to hide macOS malware lures](https://kb.gajshield.com/a/1195/over-250-clickfix-domains-use-browser-fingerprinting-to-hide-macos-malware-lures) — 미상 — blocked (DNS)
-- [Moonlock — ClickFix scams evolve to infect Macs with infostealers](https://moonlock.com/clickfix-scams-infect-macs-infostealers) — 2026-03 — blocked (DNS)
-- [EveryWan — macOS malware: you paste it yourself](https://everywan.com/en/blog/macos-malware-you-paste-it-yourself) — 미상 — blocked (DNS)
-- [UnderCode Testing — MacSync Mayhem](https://undercodetesting.com/macsync-mayhem-how-this-macos-stealer-infects-persists-and-pilfers-your-data-and-how-to-stop-it-video/) — 미상 — blocked (DNS, 신규)
-- [9to5Mac — macOS ClickFix campaign](https://9to5mac.com/2026/07/18/macos-clickfix-campaign/) — 2026-07-18 — blocked (DNS, 신규)
+- [UVCyber — ThreatAdvisory MacOS ClickFix Risks (PDF)](https://www.uvcyber.com/hubfs/ThreatAdvisory-MacOS-Clickfix-Risks-17MAR26.pdf) — 2026-03-17 — blocked (DNS, 신규)
 - FSEC(금융보안원) 2026-09 보안 권고 — seed(advisory)
