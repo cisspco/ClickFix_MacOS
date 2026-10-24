@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-23 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-10-24 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: trendmicro.com, sophos.com, hackmag.com, securityaffairs.com, helpnetsecurity.com (전부 기존에 이미 차단으로 확인된 도메인, DNS 조회 실패)
+- 추가 페치 차단: securityarsenal.com, socprime.com, malwarebytes.com, moonlock.com (전부 DNS 조회 실패로 신규 차단 확인; trendmicro.com/sophos.com/hackmag.com/securityaffairs.com/helpnetsecurity.com 등 기존 확인 차단 도메인은 재시도 생략)
 - seed: 7 (호스트 경로/명령 패턴) / 검증: 31 도메인 + C2 행위 패턴 전반 / 미검증: 도메인 14 · IP 1 · 해시 3
 
 ## 캐페인 개요
@@ -18,7 +18,7 @@
 6. 외부 유출 · 세션 재사용 위험 — `/curl/`, `/dynamic?txd=`, `/gate?buildtxd=` URI 패턴, HTTP PUT + `--data-binary`, `api-key` 헤더, `upload_id`/`chunk_index`/`total_chunks` 청크 업로드로 외부 서버에 유출(verified). 탈취된 세션 쿠키로 기존 로그인 재사용 가능 — 비밀번호 변경·MFA 활성화만으로는 무효화되지 않음.
 
 ## 공격자 인프라 — 가짜 설치/C2 (차단 대상) (31)
-- aihealthring[.]com, cabinrentalsnc[.]com, chatbasedos[.]com, commercialroofingsd[.]com, dogtrainersgeorgia[.]com, fintelliganceai[.]com, homeinspectionsdelaware[.]com, intopython[.]com, lalandscapelighting[.]com, lumenagnet[.]com, marbellaresales[.]com, miamipcsupport[.]com, moldinspectiondayton[.]com, nailscanai[.]com, newjerseypetsitter[.]com, numericagent[.]com, oaklandwaterdamage[.]com, oklahomawarehousing[.]com, olympiapetemergency[.]com, peaecagent[.]com, plasmaticsystems[.]com, plethorawallet[.]com, premierrentalpurchase[.]com, ricewaterbeauty[.]com, rvieragent[.]com, sandiegotkd[.]com, secueragent[.]com, shiledagent[.]com, syracusefertilitycenter[.]com, vastbets[.]com, wvaeagent[.]com — 가짜 설치/C2 도메인 — verified (Microsoft, 2026-08-18; 25일 연속 재확인)
+- aihealthring[.]com, cabinrentalsnc[.]com, chatbasedos[.]com, commercialroofingsd[.]com, dogtrainersgeorgia[.]com, fintelliganceai[.]com, homeinspectionsdelaware[.]com, intopython[.]com, lalandscapelighting[.]com, lumenagnet[.]com, marbellaresales[.]com, miamipcsupport[.]com, moldinspectiondayton[.]com, nailscanai[.]com, newjerseypetsitter[.]com, numericagent[.]com, oaklandwaterdamage[.]com, oklahomawarehousing[.]com, olympiapetemergency[.]com, peaecagent[.]com, plasmaticsystems[.]com, plethorawallet[.]com, premierrentalpurchase[.]com, ricewaterbeauty[.]com, rvieragent[.]com, sandiegotkd[.]com, secueragent[.]com, shiledagent[.]com, syracusefertilitycenter[.]com, vastbets[.]com, wvaeagent[.]com — 가짜 설치/C2 도메인 — verified (Microsoft, 2026-08-18; 26일 연속 재확인)
 
 ## 미검증 후보 — 참고용, 차단 금지 (도메인 14 / IP 1)
 - agenticsora[.]com, arkypc[.]com, claude-desk-code[.]com, cladesktop-apps[.]com, cladesktop.gitlab[.]io, focusgroovy[.]com, houstongaragedoorinstallers[.]com, jacksonvillemma[.]com, lake-90[.]com, malwareaudit[.]com, slack.apple03cloudstore[.]com, streamyard.appstore.com[.]mx, toria[.]app, warpcast[.]asia — 검색 스니펫/원문 차단 기반 후보 — ⚠️ (미검증)
@@ -42,7 +42,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (Microsoft 1차 출처 25일 연속 안정성 재확인; trendmicro.com/sophos.com/hackmag.com/securityaffairs.com/helpnetsecurity.com 추가 시도 전부 기존에 이미 차단으로 확인된 도메인으로 재확인, DNS 조회 실패. WebSearch 5건에서도 기존에 이미 기록된 서술(claude1 빌드, Ledger Live 해시, oklahomawarehousing.com, SOC Prime 회전 C2, Adception, Sophos 3단계 캠페인)의 재인용만 확인, 무관 패밀리(Netskope AppleScript, Cuckoo, Gimmick, Shamos)도 재확인되었으나 미채택)
+- 신규 보고서: 없음 (Microsoft 1차 출처 26일 연속 안정성 재확인. WebSearch 5건에서 신규 구체 IOC는 발견되지 않음 — Netskope AppleScript 스틸러·Sophos 2025-11~2026-02 MacSync+가짜 ChatGPT 캠페인·SecurityWeek/Trend Micro InstallFix(Windows)·Malwarebytes 2026-05 가짜 Claude 검색광고 서술 등은 모두 관련 맥락이나 본 캠페인과 동일 IOC 세트로 원문 확인 불가하여 미채택. securityarsenal.com, socprime.com, malwarebytes.com, moonlock.com 추가 페치는 전부 DNS 실패로 차단 확인)
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
