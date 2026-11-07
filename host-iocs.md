@@ -172,6 +172,8 @@
 - **주의 — ThreatRoad "Claude 테마 악성코드 캠페인 4건" 서술 (원문 차단):** ThreatRoad Substack이 PlugX 설치 프로그램, 트로이목마화된 VS Code 확장 등을 포함해 Claude를 사칭한 악성코드 캠페인이 최소 4건 존재하며 그중 macOS 유인이 MacSync 인포스틸러를 전달한다고 서술 — PlugX·VS Code 확장 벡터는 별개 악성코드/플랫폼(Windows 지향 추정)으로 판단되어 본 캠페인(가짜 Claude 설치 페이지 + MacSync) IOC로 미채택, macOS/MacSync 관련 부분만 기존 서술과 부합하는 맥락 정보로 기록 — ⚠️ (미검증, 채택 보류) (2026-11-05 추가)
 - **주의 — Microsoft 2026 Digital Defense Report "110만 대 이상" 통계 (범위 불확실, 원문 미확인):** 검색 스니펫에서 Microsoft가 2026-02~05월 사이 ClickFix류 공격자 명령이 110만 대 이상의 기기에서 실행되었다고 보고했다는 서술 확인 — 이는 ClickFix 기법 전반(Windows 포함, 모든 유인 포함)에 대한 통계로 추정되며 가짜 Claude 설치 페이지/MacSync에 한정된 수치인지 확인되지 않음 — 2026-09-23 "15,600명 피해자" 주의 사례와 동일한 이유로 본 저장소의 확정 수치로 채택하지 않음 — ⚠️ (미검증, 채택 보류) (2026-11-05 추가)
 
+- **Microsoft 1차 출처(2026-08-18) 안정성 재확인 (2026-11-07):** 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, macOS User-Agent, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 기존 기록과 100% 동일 — 신규 도메인/해시/IP 없음. ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 cert.gov.az·securityarsenal.com·trendmicro.com·hackread.com·ahnlab.com 5건도 전부 DNS 조회 실패했으나 모두 기존에 이미 차단으로 확인된 도메인 — 신규 차단 목록 변경 없음. WebSearch 5건에서도 기존 기록(CERT 아제르바이잔 claude1 빌드, Aeza Group/193.29.224.151·profitnow.io, Push Security AcSig, Sophos 3단계 ChatGPT 유인, Huntress Go 기반 Mach-O 등)의 재인용만 확인 — 조용한 날(quiet day).
+
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
 - 감염 의심 단말은 즉시 네트워크에서 격리
