@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-08 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-09 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: cert.gov.az, hackread.com, securityarsenal.com, www.trendmicro.com (전부 기존에 이미 차단으로 확인된 도메인)
+- 추가 페치 차단: ahnlab.com, notebookcheck.net, moonlock.com, pulse.bot (전부 신규 시도, DNS 조회 실패)
 - seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
 
 ## 캐페인 개요
@@ -90,7 +90,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 — 조용한 날(quiet day). 지정 출처 중 Microsoft만 재페치 성공(기존과 100% 동일: 검증 도메인 31건, URI/HTTP 패턴 동일), ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. 추가 후보 4건(cert.gov.az, hackread.com, securityarsenal.com, www.trendmicro.com)도 전부 DNS 조회 실패했으나 모두 기존에 이미 차단으로 확인된 도메인 — 신규 차단 목록 변경 없음. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(CERT 아제르바이잔 "claude1" 빌드·Ledger Live 해시, Security Arsenal/SOC Prime 회전 C2, Aeza Group/193.29.224.151·profitnow.io, Sophos 2~3월 캠페인, Netskope AppleScript 무관 패밀리, Huntress Go 기반 Mach-O)의 재인용만 확인되었고, 본 캠페인에 새로 귀속되는 도메인·IP·해시는 없음.
+- 신규 보고서: 없음 — 조용한 날(quiet day). 지정 출처 중 Microsoft만 재페치 성공(기존과 100% 동일: 검증 도메인 31건, URI/HTTP 패턴 동일), ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. 신규로 시도한 ahnlab.com, notebookcheck.net, moonlock.com, pulse.bot 4건도 전부 DNS 조회 실패 — 신규 차단 도메인 목록에 추가. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(Push Security AcSig/Adception, Gen Digital claude.ai 자체 호스팅 서술, Sophos 3단계 ChatGPT 유인, Huntress Go 기반 Mach-O + Aeza Group, Netskope AppleScript 무관 패밀리, CERT 아제르바이잔 claude1 빌드)의 재인용만 확인되었고, 본 캠페인에 새로 귀속되는 도메인·IP·해시는 없음.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,8 +144,8 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [Azerbaijan CERT: Warning for Mac users — fake Claude AI application targets user information](https://cert.gov.az/en/news/warning-for-mac-users-fake-claude-ai-application-targets-user-information) — 날짜 미확인 — blocked
-- [HackRead: ClickFix Attack Targets Devs with MacSync Malware via Fake Claude Tools](https://hackread.com/clickfix-attack-devs-macsync-malware-fake-claude-tools/) — 날짜 미확인 — blocked
-- [Security Arsenal: MacSync Stealer — Hunting macOS Infostealer C2 Infrastructure with Behavioral Pivots](https://securityarsenal.com/blog/macsync-stealer-hunting-macos-infostealer-c2-infrastructure-with-behavioral-pivots-detection-and-response-guide) — 날짜 미확인 — blocked
-- [Trend Micro: InstallFix and Claude Code](https://www.trendmicro.com/fr_fr/research/26/e/installfix-and-claude-code.html) — 날짜 미확인 — blocked
+- [AhnLab: Fake Claude Download Sites Spreading Malware](https://www.ahnlab.com/en/contents/content-center/36141) — 날짜 미확인 — blocked
+- [Notebookcheck: Fake Claude download pages on claude.ai steal passwords and crypto](https://www.notebookcheck.net/Fake-Claude-download-pages-on-claude-ai-steal-passwords-and-crypto.1435034.0.html) — 날짜 미확인 — blocked
+- [Moonlock: ClickFix scams evolve to infect Macs with infostealers](https://moonlock.com/clickfix-scams-infect-macs-infostealers) — 날짜 미확인 — blocked
+- [Pulse.bot: Google Ads and Claude AI Abused to Spread MacSync Malware via ClickFix](https://www.pulse.bot/cybersecurity/news/google-ads-and-claude-ai-abused-to-spread-macsync-malware-via-clickfix-43854487-693b-433c-8ddc-43dd6dc9446e/) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)

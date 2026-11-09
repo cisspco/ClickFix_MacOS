@@ -176,6 +176,8 @@
 
 - **Microsoft 1차 출처(2026-08-18) 안정성 재확인 (2026-11-08, 2026-11-07 이후 1일 간격):** 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, macOS User-Agent, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 기존 기록과 100% 동일 — 신규 도메인/해시/IP 없음. 원문은 이번에도 IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인을 제공하지 않음을 재확인. ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 cert.gov.az·hackread.com·securityarsenal.com·www.trendmicro.com 4건도 전부 DNS 조회 실패했으나 모두 기존에 이미 차단으로 확인된 도메인 — 신규 차단 목록 변경 없음. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(CERT 아제르바이잔 claude1 빌드·Ledger Live 해시, Security Arsenal/SOC Prime 회전 C2, Aeza Group/193.29.224.151·profitnow.io, Sophos 2~3월 캠페인, Netskope AppleScript 무관 패밀리, Huntress Go 기반 Mach-O)의 재인용만 확인 — 조용한 날(quiet day).
 
+- **Microsoft 1차 출처(2026-08-18) 안정성 재확인 (2026-11-09, 2026-11-08 이후 1일 간격):** 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, macOS User-Agent, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 기존 기록과 100% 동일 — 신규 도메인/해시/IP 없음. 원문은 이번에도 IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인을 제공하지 않음을 재확인. ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 ahnlab.com, notebookcheck.net, moonlock.com, pulse.bot 4건도 전부 DNS 조회 실패 — 신규 차단 도메인 목록에 추가. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(Push Security AcSig/Adception, Gen Digital claude.ai 자체 호스팅 서술, Sophos 3단계 ChatGPT 유인, Huntress Go 기반 Mach-O + Aeza Group, Netskope AppleScript 무관 패밀리, CERT 아제르바이잔 claude1 빌드)의 재인용만 확인 — 조용한 날(quiet day).
+
 ## 대응 권고 (고정 — 자문 내용이 바뀔 때만 갱신)
 
 - 감염 의심 단말은 즉시 네트워크에서 격리
