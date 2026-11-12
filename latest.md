@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-11 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-12 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: www.rapid7.com, www.bitdefender.com, www.anvilogic.com, connect.securonix.com (전부 신규 시도, DNS 조회 실패), securityarsenal.com (재시도, DNS 조회 실패)
+- 추가 페치 차단: redpiranha.net, www.pcrisk.com, hunt.io, www.catonetworks.com (전부 신규 시도, DNS 조회 실패)
 - seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
 
 ## 캐페인 개요
@@ -90,7 +90,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. 신규로 시도한 Rapid7("ClickFix phishing campaign — fake Claude installer"), Bitdefender("Windows and macOS Malware Spreads via Fake Claude Code Google Ads"), Anvilogic("MacSync Infostealer via ClickFix Claude Artifact Abuse"), Securonix("FakeAgent" — claude.ai 호스팅 악성 Artifact로 SectopRAT 전달) 4건과 securityarsenal.com 재시도 모두 프록시 차단. 이 중 Securonix/Huntress의 "FakeAgent" 캠페인은 페이로드가 **SectopRAT**(MacSync 아님)인 별개 패밀리로 확인되어 IOC 미채택(혼동 방지 목적 기록). Anvilogic 리포트는 제목에서 **MacSync와 claude.ai Artifact 악용을 직접 연결**하고 있어 주목되나 원문 차단으로 세부 미확인 — 미검증 맥락 정보로만 기록. 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
+- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. 신규로 시도한 Red Piranha("MacSync Stealer: How a MaaS Infostealer is Quietly Draining macOS Endpoints" — 제목상 본 캠페인 전용 리포트로 추정), PCrisk("Threat Actors Abusing Google Ads to Deploy Odyssey and AMOS" — MacSync/Claude 연관성 확인 시도), Hunt.io("macOS ClickFix: AppleScript Stealers & Terminal Phishing" — MacSync 연관성 확인 시도), Cato Networks("When Trust Becomes Payload in a Fake Codex ClickFix Campaign" — 가짜 OpenAI Codex 캠페인과의 인프라 공유 여부 확인 시도) 4건 모두 프록시 차단으로 원문 미확보. "MacSync Stealer macOS IOC November 2026" 특정 검색에서도 2026-09월 이후 신규 1차 보도는 확인되지 않음(SOC Prime/Security Arsenal/GBHackers 등 기존 9월 보도의 재인용만 확인) — 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,9 +144,8 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [Rapid7: ClickFix phishing campaign — fake Claude installer](https://www.rapid7.com/blog/post/ve-clickfix-phishing-campaign-fake-claude-installer/) — 날짜 미확인 — blocked
-- [Bitdefender: Windows and macOS Malware Spreads via Fake Claude Code Google Ads](https://www.bitdefender.com/en-us/blog/labs/fake-claude-code-google-ads-malware) — 날짜 미확인 — blocked
-- [Anvilogic: MacSync Infostealer via ClickFix Claude Artifact Abuse](https://www.anvilogic.com/threat-reports/macsync-infostealer-via-clickfix-claude-artifact-abuse) — 날짜 미확인 — blocked
-- [Securonix: FakeAgent — How a Malicious Ad on claude.ai's Own Domain Delivered SectopRAT to 29 Organizations](https://connect.securonix.com/threat-research-intelligence-62/fakeagent-how-a-malicious-ad-on-claude-ai-s-own-domain-delivered-sectoprat-to-29-organizations-459) — 날짜 미확인 — blocked (별개 패밀리 SectopRAT, IOC 미채택)
-- [Security Arsenal: MacSync Stealer – Hunting macOS Infostealer C2 Infrastructure with Behavioral Pivots](https://securityarsenal.com/blog/macsync-stealer-hunting-macos-infostealer-c2-infrastructure-with-behavioral-pivots-detection-and-response-guide) — 날짜 미확인 — blocked
+- [Red Piranha: MacSync Stealer – How a MaaS Infostealer is Quietly Draining macOS Endpoints](https://redpiranha.net/news/macsync-stealer-how-maas-infostealer-quietly-draining-macos-endpoints) — 날짜 미확인 — blocked
+- [PCrisk: Threat Actors Abusing Google Ads to Deploy Odyssey and AMOS](https://www.pcrisk.com/internet-threat-news/34145-threat-actors-abusing-google-ads-to-deploy-odyssey-and-amos) — 날짜 미확인 — blocked
+- [Hunt.io: macOS ClickFix — AppleScript Stealers & Terminal Phishing](https://hunt.io/blog/macos-clickfix-applescript-terminal-phishing) — 날짜 미확인 — blocked
+- [Cato Networks: When Trust Becomes Payload in a Fake Codex ClickFix Campaign](https://www.catonetworks.com/blog/cato-ctrl-when-trust-becomes-payload-in-fake-codex-clickfix-campaign/) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)
