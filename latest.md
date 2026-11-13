@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-12 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-13 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: redpiranha.net, www.pcrisk.com, hunt.io, www.catonetworks.com (전부 신규 시도, DNS 조회 실패)
+- 추가 페치 차단: socprime.com, gbhackers.com, aviatrix.ai, feed.craftedsignal.io, cti.ngrok.app (전부 신규 시도, DNS 조회 실패)
 - seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
 
 ## 캐페인 개요
@@ -90,7 +90,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. 신규로 시도한 Red Piranha("MacSync Stealer: How a MaaS Infostealer is Quietly Draining macOS Endpoints" — 제목상 본 캠페인 전용 리포트로 추정), PCrisk("Threat Actors Abusing Google Ads to Deploy Odyssey and AMOS" — MacSync/Claude 연관성 확인 시도), Hunt.io("macOS ClickFix: AppleScript Stealers & Terminal Phishing" — MacSync 연관성 확인 시도), Cato Networks("When Trust Becomes Payload in a Fake Codex ClickFix Campaign" — 가짜 OpenAI Codex 캠페인과의 인프라 공유 여부 확인 시도) 4건 모두 프록시 차단으로 원문 미확보. "MacSync Stealer macOS IOC November 2026" 특정 검색에서도 2026-09월 이후 신규 1차 보도는 확인되지 않음(SOC Prime/Security Arsenal/GBHackers 등 기존 9월 보도의 재인용만 확인) — 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
+- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서 신규로 socprime.com("MacSync Stealer Utilise une Infrastructure C2 Rotative" 영문판), gbhackers.com("MacSync's New Infection Chain"), aviatrix.ai, feed.craftedsignal.io, cti.ngrok.app(OTX 펄스 미러) 5건을 신규로 특정·페치 시도했으나 전부 DNS 조회 실패(프록시 차단) — 신규 차단 도메인 목록에 추가. 검색 스니펫 자체도 기존 기록(CERT 아제르바이잔 claude1 빌드·Ledger Live 해시, Aeza Group/193.29.224.151·profitnow.io, Push Security AcSig, Sophos 3캠페인, Rapid7/Bitdefender/Anvilogic/Securonix, Netskope AppleScript 무관 패밀리, Huntress Go 기반 Mach-O, Trend Micro InstallFix)의 재인용만 확인 — 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,8 +144,9 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [Red Piranha: MacSync Stealer – How a MaaS Infostealer is Quietly Draining macOS Endpoints](https://redpiranha.net/news/macsync-stealer-how-maas-infostealer-quietly-draining-macos-endpoints) — 날짜 미확인 — blocked
-- [PCrisk: Threat Actors Abusing Google Ads to Deploy Odyssey and AMOS](https://www.pcrisk.com/internet-threat-news/34145-threat-actors-abusing-google-ads-to-deploy-odyssey-and-amos) — 날짜 미확인 — blocked
-- [Hunt.io: macOS ClickFix — AppleScript Stealers & Terminal Phishing](https://hunt.io/blog/macos-clickfix-applescript-terminal-phishing) — 날짜 미확인 — blocked
-- [Cato Networks: When Trust Becomes Payload in a Fake Codex ClickFix Campaign](https://www.catonetworks.com/blog/cato-ctrl-when-trust-becomes-payload-in-fake-codex-clickfix-campaign/) — 날짜 미확인 — blocked
+- [SOC Prime: MacSync Stealer Uses Rotating C2 Infrastructure](https://socprime.com/active-threats/macsync-stealer-uses-rotating-c2-infrastructure/) — 날짜 미확인 — blocked
+- [GBHackers: MacSync's New Infection Chain](https://gbhackers.com/macsyncs-new-infection-chain/amp/) — 날짜 미확인 — blocked
+- [Aviatrix Threat Research: ClickFix Campaigns — MacSync macOS Infostealer](https://aviatrix.ai/threat-research-center/clickfix-campaigns-macsync-macos-infostealer) — 날짜 미확인 — blocked
+- [CraftedSignal Brief: MacSync Stealer](https://feed.craftedsignal.io/briefs/2026-08-macsync-stealer/) — 날짜 미확인 — blocked
+- [AlienVault OTX Pulse Mirror (ngrok)](https://cti.ngrok.app/pulses/69d7ed2e323d7edb856fa161) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)
