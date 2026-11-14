@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-13 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-14 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: socprime.com, gbhackers.com, aviatrix.ai, feed.craftedsignal.io, cti.ngrok.app (전부 신규 시도, DNS 조회 실패)
+- 추가 페치 차단: www.rapid7.com, hackread.com, www.anvilogic.com, securityarsenal.com, www.scworld.com (www.scworld.com만 신규 확인, 나머지는 기존 차단 목록과 동일)
 - seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
 
 ## 캐페인 개요
@@ -90,7 +90,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서 신규로 socprime.com("MacSync Stealer Utilise une Infrastructure C2 Rotative" 영문판), gbhackers.com("MacSync's New Infection Chain"), aviatrix.ai, feed.craftedsignal.io, cti.ngrok.app(OTX 펄스 미러) 5건을 신규로 특정·페치 시도했으나 전부 DNS 조회 실패(프록시 차단) — 신규 차단 도메인 목록에 추가. 검색 스니펫 자체도 기존 기록(CERT 아제르바이잔 claude1 빌드·Ledger Live 해시, Aeza Group/193.29.224.151·profitnow.io, Push Security AcSig, Sophos 3캠페인, Rapid7/Bitdefender/Anvilogic/Securonix, Netskope AppleScript 무관 패밀리, Huntress Go 기반 Mach-O, Trend Micro InstallFix)의 재인용만 확인 — 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
+- 신규 보고서: 없음 (본 캠페인에 확정 귀속되는 신규 IOC 없음) — Microsoft 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서 신규로 www.rapid7.com, hackread.com, www.anvilogic.com, securityarsenal.com, www.scworld.com 5건의 직접 관련성 높은 기사(제목상 본 캠페인과 직접 연관)를 특정·페치 시도했으나 전부 DNS 조회 실패(프록시 차단) — www.scworld.com만 신규 차단 도메인으로 기록(나머지는 기존에 이미 차단 확인된 도메인). 검색 스니펫에서도 기존 기록(SOC Prime 키체인 비밀번호 GET 유출 서술, SCC Homebrew 유인 LaunchAgent 지속성 — 별개 유인·동일 패밀리, Moonlock "단계형 로더" 서술, Sophos ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex Google Sites iframe 캠페인, Huntress FakeAgent/SectopRAT, Gen Digital claude.ai 자체 호스팅)의 재인용만 확인 — 조용한 날(quiet day) — 블록리스트/해시 변경 없음.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,9 +144,9 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [SOC Prime: MacSync Stealer Uses Rotating C2 Infrastructure](https://socprime.com/active-threats/macsync-stealer-uses-rotating-c2-infrastructure/) — 날짜 미확인 — blocked
-- [GBHackers: MacSync's New Infection Chain](https://gbhackers.com/macsyncs-new-infection-chain/amp/) — 날짜 미확인 — blocked
-- [Aviatrix Threat Research: ClickFix Campaigns — MacSync macOS Infostealer](https://aviatrix.ai/threat-research-center/clickfix-campaigns-macsync-macos-infostealer) — 날짜 미확인 — blocked
-- [CraftedSignal Brief: MacSync Stealer](https://feed.craftedsignal.io/briefs/2026-08-macsync-stealer/) — 날짜 미확인 — blocked
-- [AlienVault OTX Pulse Mirror (ngrok)](https://cti.ngrok.app/pulses/69d7ed2e323d7edb856fa161) — 날짜 미확인 — blocked
+- [Rapid7: ClickFix phishing campaign — fake Claude installer](https://www.rapid7.com/blog/post/ve-clickfix-phishing-campaign-fake-claude-installer/) — 날짜 미확인 — blocked
+- [Hackread: ClickFix Attack Targets Devs with MacSync Malware via Fake Claude Tools](https://hackread.com/clickfix-attack-devs-macsync-malware-fake-claude-tools/) — 날짜 미확인 — blocked
+- [Anvilogic: MacSync Infostealer via ClickFix Claude Artifact Abuse](https://www.anvilogic.com/threat-reports/macsync-infostealer-via-clickfix-claude-artifact-abuse) — 날짜 미확인 — blocked
+- [Security Arsenal: Hunting macOS Infostealer C2 Infrastructure with Behavioral Pivots](https://securityarsenal.com/blog/macsync-stealer-hunting-macos-infostealer-c2-infrastructure-with-behavioral-pivots-detection-and-response-guide) — 날짜 미확인 — blocked
+- [SC World: Claude Code install search result leads to ClickFix infostealer attack](https://www.scworld.com/news/claude-code-install-search-result-leads-to-clickfix-infostealer-attack) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)
