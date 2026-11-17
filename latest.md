@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-16 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-17 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: anvilogic.com, securityarsenal.com, rapid7.com, bitdefender.com (전부 기존에 이미 차단으로 확인된 도메인, DNS 조회 실패)
+- 추가 페치 차단: cti.ngrok.app, www.kaspersky.com, redpiranha.net, www.seqrite.com, feed.craftedsignal.io (이 중 www.kaspersky.com, www.seqrite.com은 신규 차단 확인; 나머지는 기존에 이미 차단으로 확인됨)
 - seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
 
 ## 캐페인 개요
@@ -90,7 +90,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 — Microsoft 원문 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일, IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인은 여전히 미제공). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 anvilogic.com("MacSync Infostealer via ClickFix Claude Artifact Abuse"), securityarsenal.com(OTX 펄스 분석 2건), rapid7.com(가짜 Claude 설치 ClickFix 캠페인), bitdefender.com(Fake Claude Code Google Ads) 총 5건 모두 DNS 조회 실패했으나 전부 기존에 이미 차단으로 확인된 도메인 — 신규 차단 도메인 목록 변경 없음. WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(CERT 아제르바이잔 claude1 빌드·Ledger Live 해시, Aeza Group/193.29.224.151·profitnow.io, Push Security AcSig, Sophos 3캠페인, Rapid7/Bitdefender/Anvilogic/Securonix 제목만 확인된 건, Netskope AppleScript 무관 패밀리, Huntress Go 기반 Mach-O/FakeAgent-SectopRAT, Trend Micro InstallFix)의 재인용만 확인 — 본 캠페인(가짜 Claude 설치 + MacSync)에 새로 귀속되는 도메인·IP·해시 없음 — 조용한 날(quiet day), 32일 연속 안정.
+- 신규 보고서: 없음 — Microsoft 원문 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일, IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인은 여전히 미제공). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 cti.ngrok.app(OTX 펄스 미러), www.kaspersky.com(MacSync 신버전 보도자료), redpiranha.net(MaaS 서술), www.seqrite.com, feed.craftedsignal.io(2026-08 브리프) 총 5건 모두 DNS 조회 실패 — www.kaspersky.com, www.seqrite.com만 신규 차단 도메인 목록에 추가(나머지는 기존 차단 확인). WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(CERT 아제르바이잔 claude1 빌드·Ledger Live 해시, Aeza Group/193.29.224.151·profitnow.io, Push Security AcSig "claude mac" 광고, Sophos 2~3월 ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex Google Sites iframe, Huntress FakeAgent/SectopRAT·Go 기반 Mach-O, Netskope AppleScript 무관 패밀리, Trend Micro InstallFix, Rapid7/Bitdefender/Anvilogic/Securonix 제목만 확인된 건)의 재인용만 확인 — 본 캠페인(가짜 Claude 설치 + MacSync)에 새로 귀속되는 도메인·IP·해시 없음 — 조용한 날(quiet day), 33일 연속 안정.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,8 +144,9 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [Anvilogic: MacSync Infostealer via ClickFix Claude Artifact Abuse](https://www.anvilogic.com/threat-reports/macsync-infostealer-via-clickfix-claude-artifact-abuse) — 날짜 미확인 — blocked
-- [Security Arsenal: MacSync Stealer — Hunting macOS Infostealer C2 Infrastructure With Behavioral Pivots](https://securityarsenal.com/blog/macsync-stealer-hunting-macos-infostealer-c2-infrastructure-with-behavioral-pivots-detection-and-response-guide) — 날짜 미확인 — blocked
-- [Rapid7: ClickFix Phishing Campaign — Fake Claude Installer](https://www.rapid7.com/blog/post/ve-clickfix-phishing-campaign-fake-claude-installer/) — 날짜 미확인 — blocked
-- [Bitdefender: Windows and macOS Malware Spreads via Fake "Claude Code" Google Ads](https://www.bitdefender.com/en-us/blog/labs/fake-claude-code-google-ads-malware) — 날짜 미확인 — blocked
+- [Kaspersky: Kaspersky discovers a new version of MacSync malware stealing credentials and crypto from macOS users](https://www.kaspersky.com/about/press-releases/kaspersky-discovers-a-new-version-of-macsync-malware-stealing-credentials-and-crypto-from-macos-users) — 날짜 미확인 — blocked
+- [Red Piranha: MacSync Stealer — How MaaS Infostealer Quietly Draining macOS Endpoints](https://redpiranha.net/news/macsync-stealer-how-maas-infostealer-quietly-draining-macos-endpoints) — 날짜 미확인 — blocked
+- [Seqrite blog post](https://www.seqrite.com/blog/?p=11215) — 날짜 미확인 — blocked
+- [CraftedSignal brief: 2026-08 MacSync Stealer](https://feed.craftedsignal.io/briefs/2026-08-macsync-stealer/) — 2026-08 — blocked
+- [OTX pulse mirror (cti.ngrok.app)](https://cti.ngrok.app/pulses/69d7ed2e323d7edb856fa161) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)
