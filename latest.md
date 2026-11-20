@@ -1,10 +1,10 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-19 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-20 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: scworld.com, ahnlab.com, anvilogic.com, notebookcheck.net, rapid7.com (이 중 ahnlab.com, notebookcheck.net은 신규 차단 확인; 나머지는 기존에 이미 차단으로 확인됨)
-- seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 3
+- 추가 페치 차단: www.malware-traffic-analysis.net, techcommunity.microsoft.com, siliconangle.com (3건 모두 신규 차단 확인)
+- seed: 다수(파일경로/명령 패턴) / 검증: 도메인 31 / 미검증: 도메인 15, IP 2, 해시 5
 
 ## 캐페인 개요
 가짜 Claude Desktop/Claude Code 설치 페이지(검색광고)를 통한 ClickFix 기법으로 사용자가 터미널에 명령을 직접 붙여넣게 유도하고, 아키텍처에 맞는 악성 Mach-O를 다운로드·실행. MacSync 모듈이 Chromium계·Firefox·Safari 쿠키·프로파일을 수집해 외부로 유출. 탈취된 세션 쿠키로 기존 로그인 재사용 가능.
@@ -71,10 +71,12 @@
 - 193.29.224.151 — Aeza Group(방탄호스팅) 소속, MacSync 스테이징/C2 후보 — ⚠️ (미검증)
 - 45.94.47.204 — ⚠️ (미검증)
 
-## 파일 해시 (3, 전부 미검증)
+## 파일 해시 (5, 전부 미검증)
 ### SHA-256
+- 173ff5ede7c28163ceaa9440de8a02cef26295f8be06b6b0f90b0a4284471bc2 — Mach-O 페이로드 "devupdatesuite-helper"(MacSync 추정, malware-traffic-analysis.net 2025-12-23, 원문 차단·검색 스니펫만) — ⚠️ (미검증, 범위 불확실)
 - 1abf943e97356e07bde23663da544e7c106afc19827a2106361a52035737de43 — 트로이목마화된 Ledger Live 앱(크립토 지갑) — ⚠️ (미검증)
 - 2728a7d444cd65550f652a8c66eaced0fe6d0389161f86393ab73da8f446a362 — Stage 2 zsh loader (MacSync, 추정) — ⚠️ (미검증)
+- b591bfbab57cc69ce985fbc426002ef00826605257de0547f20ebcfecc3724c2 — DMG 설치 이미지(MacSync 추정, malware-traffic-analysis.net 2025-12-23, 원문 차단·검색 스니펫만) — ⚠️ (미검증, 범위 불확실)
 - bd348a40261aa2d95566ccdc4e6f304ff25aa97d34e5c713c77c937583ad04f0 — MacSync Stealer v1.1.2 드로퍼 (build tag "claude1") — ⚠️ (미검증)
 
 ## 호스트 IOC · 행위 (누적)
@@ -87,10 +89,10 @@
 
 ## 이번 실행 변경사항
 - 신규 인프라: 없음
-- 신규 해시: 없음
+- 신규 해시: 2건 (SHA-256 `173ff5ede7c28163ceaa9440de8a02cef26295f8be06b6b0f90b0a4284471bc2`, `b591bfbab57cc69ce985fbc426002ef00826605257de0547f20ebcfecc3724c2` — malware-traffic-analysis.net "MACSYNC STEALER INFECTION" 2025-12-23 검색 스니펫, 원문 차단, provenance=unverified, 가짜 Claude 설치 페이지와의 연결 미확인)
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 — Microsoft 원문 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일, IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인은 여전히 미제공). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 scworld.com(`ClickFix campaigns target macOS users via MacSync infostealer`), ahnlab.com(`Fake Claude Download Sites Spreading Malware`), anvilogic.com(`MacSync Infostealer via ClickFix Claude Artifact Abuse`, 재시도), notebookcheck.net(`Fake Claude download pages on claude.ai steal passwords and crypto`), rapid7.com(`ClickFix-style Phishing Campaign Uses Fake Claude Installer`, 재시도) 총 5건 모두 DNS 조회 실패 — 이 중 ahnlab.com·notebookcheck.net만 신규 차단 도메인으로 확인(scworld.com·anvilogic.com·rapid7.com은 기존에 이미 차단 확인됨). WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(Rapid7 ClickFix-style 가짜 Claude 설치 제목, Push Security "claude mac"/AcSig 광고, Gen Digital claude.ai 자체 호스팅, Sophos ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex, Huntress FakeAgent/SectopRAT, Securonix FakeAgent, Anvilogic Claude Artifact 악용 제목, Kaspersky 신버전 보도, Netskope AppleScript/AmnesiaStealer 등 무관 패밀리, Trend Micro InstallFix, ThreatRoad Claude 테마 캠페인 4건)의 재인용만 확인 — 본 캠페인(가짜 Claude 설치 + MacSync)에 새로 귀속되는 도메인·IP·해시 없음 — 조용한 날(quiet day), 35일 연속 안정.
+- 신규 보고서: 없음 — Microsoft 원문 재페치 결과 기존과 100% 동일(검증 도메인 31건, URI/HTTP 패턴 동일, IP·해시·ASN·지속성 메커니즘·가짜 Claude 설치 전용 도메인은 여전히 미제공). ThreatFox·Beelzebub은 이번에도 DNS 조회 실패(차단). 신규로 시도한 www.malware-traffic-analysis.net, techcommunity.microsoft.com, siliconangle.com 3건 모두 DNS 조회 실패(신규 차단 확인). WebSearch 5건(MacSync IOC 11월, ClickFix 가짜 Claude 설치, Mach-O 구글광고, cksyncd 지속성, 세션쿠키 탈취)에서도 기존 기록(CERT 아제르바이잔 claude1 빌드, Push Security AcSig, Gen Digital claude.ai 자체 호스팅, Huntress FakeAgent/SectopRAT, Sophos ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex, Rapid7/Bitdefender/Anvilogic/Securonix, Netskope AppleScript/AmnesiaStealer/CloudSyncD 등 무관 패밀리, Trend Micro InstallFix)의 재인용만 확인 — 본 캠페인(가짜 Claude 설치 + MacSync)에 새로 귀속되는 도메인·IP 없음 — 조용한 날(quiet day), 36일 연속 안정.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
@@ -144,9 +146,7 @@ wvaeagent.com
 - [Hunting MacSync Stealer Infrastructure Through Behavioral Pivots](https://www.microsoft.com/en-us/security/blog/2026/08/18/hunting-macsync-stealer-infrastructure-through-behavioral-pivots/) — 2026-08-18 — fetched
 - [ThreatFox IOC 1893641](https://threatfox.abuse.ch/ioc/1893641/) — 날짜 미확인 — blocked
 - [MacSync Stealer: Fake Claude Code Google Ads](https://beelzebub.ai/blog/macsync-stealer-fake-claude-code-google-ads/) — 날짜 미확인 — blocked
-- [SC World: ClickFix campaigns target macOS users via MacSync infostealer](https://www.scworld.com/news/clickfix-campaigns-target-macos-users-via-macsync-infostealer) — 날짜 미확인 — blocked
-- [AhnLab: Fake Claude Download Sites Spreading Malware](https://www.ahnlab.com/en/contents/content-center/36141) — 날짜 미확인 — blocked
-- [Anvilogic: MacSync Infostealer via ClickFix Claude Artifact Abuse](https://www.anvilogic.com/threat-reports/macsync-infostealer-via-clickfix-claude-artifact-abuse) — 날짜 미확인 — blocked
-- [Notebookcheck: Fake Claude download pages on claude.ai steal passwords and crypto](https://www.notebookcheck.net/Fake-Claude-download-pages-on-claude.ai-steal-passwords-and-crypto.1435034.0.html) — 날짜 미확인 — blocked
-- [Rapid7: ClickFix-style Phishing Campaign Uses Fake Claude Installer](https://www.rapid7.com/blog/post/ve-clickfix-phishing-campaign-fake-claude-installer/) — 날짜 미확인 — blocked
+- [Malware Traffic Analysis: MACSYNC STEALER INFECTION](https://www.malware-traffic-analysis.net/2025/12/23/index.html) — 2025-12-23 — blocked
+- [Microsoft Tech Community: Hunting Infostealers - macOS Threats](https://techcommunity.microsoft.com/blog/microsoftsecurityexperts/hunting-infostealers---macos-threats/4494435) — 날짜 미확인 — blocked
+- [SiliconAngle](https://siliconangle.com/?p=827182) — 날짜 미확인 — blocked
 - FSEC(금융보안원) 2026-09 보안 권고 — 2026-09 — seed(advisory)
