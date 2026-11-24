@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-23 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-24 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: www.huntress.com, cert.gov.az, www.cisecurity.org, www.bitdefender.com, www.csoonline.com (5건 모두 기존에 이미 차단으로 확인된 도메인, 재시도 결과 동일)
+- 추가 페치 차단: www.huntress.com, www.bitdefender.com, cert.gov.az, gbhackers.com, www.trendmicro.com (5건 모두 기존에 이미 차단으로 확인된 도메인, 재시도 결과 동일)
 - seed: 9 / 검증: 31(도메인) + 행위·URI 패턴 다수 / 미검증: 15(도메인) + 2(IP) + 5(해시)
 
 ## 캐페인 개요
@@ -37,7 +37,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 — Microsoft(2026-08-18) 원문 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 기존 기록과 100% 동일. ThreatFox·Beelzebub은 DNS 조회 실패(차단) 지속. 신규 시도 5건(huntress.com, cert.gov.az, cisecurity.org, bitdefender.com, csoonline.com)도 전부 DNS 조회 실패했으나 모두 기존에 이미 차단으로 확인된 도메인 — WebSearch 5건에서도 기존에 기록된 캠페인 서술(Push Security AcSig, Gen Digital claude.ai 자체 호스팅, Huntress FakeAgent/SectopRAT, Sophos ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex, Netskope/AmnesiaStealer 등 무관 패밀리, Trend Micro InstallFix, Kaspersky 신버전, CERT 아제르바이잔 claude1 빌드)의 재인용만 확인 — 조용한 날(quiet day), 39일 연속 안정.
+- 신규 보고서: 없음 — Microsoft(2026-08-18) 원문 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴(`/curl/`, `/dynamic?txd=`, `/gate?buildtxd=`, PUT `--data-binary`, `api-key` 헤더, `upload_id`/`chunk_index`/`total_chunks`, 스테이징 `/tmp/sync*`·`/tmp/osalogging.zip`)이 기존 기록과 100% 동일. ThreatFox·Beelzebub은 DNS 조회 실패(차단) 지속. 신규 시도 5건(huntress.com, bitdefender.com, cert.gov.az, gbhackers.com, trendmicro.com)도 전부 DNS 조회 실패했으나 모두 기존에 이미 차단으로 확인된 도메인 — WebSearch 5건에서도 기존에 기록된 캠페인 서술(Push Security AcSig, Gen Digital claude.ai 자체 호스팅, Huntress FakeAgent/SectopRAT, Sophos ChatGPT Atlas 유인 3캠페인, Cato Networks 가짜 OpenAI Codex, Netskope/AmnesiaStealer 등 무관 패밀리, Trend Micro InstallFix/claude.ai 공유챗 악용, Kaspersky 신버전, CERT 아제르바이잔 claude1 빌드)의 재인용만 확인 — 조용한 날(quiet day), 40일 연속 안정.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
