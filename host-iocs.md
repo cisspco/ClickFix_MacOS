@@ -48,6 +48,9 @@
 - 가짜 설치 안내 호스팅 플랫폼 확장 — Squarespace/Google Sites 외에도 Cloudflare Pages, Tencent EdgeOne 등 정상 호스팅 플랫폼이 가짜 설치 안내 페이지 게재에 악용되었다는 서술(검색 스니펫, 원문 미확인). 이들 플랫폼 자체는 정상 서비스이므로 차단 대상 아님 — ⚠️ (미검증) (2026-09-21 추가)
 - 실행 파일명 패턴 — 2026-01 말 캠페인에서 "helper" 또는 "update"라는 이름의 실행 파일이 사용되었다는 서술(검색 스니펫, 원문 미확인) — ⚠️ (미검증) (2026-09-21 추가)
 - curl 플래그 세부사항 — 이차 출처(검색 스니펫)에 따르면 Microsoft가 연결한 인프라의 curl 명령에 `-k`, `-s`, `--max-time` 플래그 사용이 언급됨. 금일 Microsoft 원문 재페치 결과에는 해당 플래그가 명시적으로 나타나지 않아 원문 직접 확인은 안 됨 — 기존 verified 항목(`--data-binary`, `PUT`)에 대한 보강 서술로만 기록 — ⚠️ (미검증) (2026-09-21 추가)
+- 아제르바이잔 CERT(cert.gov.az) 경보 — "가짜 Claude AI 애플리케이션이 사용자 정보를 노린다"는 제목의 경보 존재(검색 스니펫, 원문 미시도) — ⚠️ (미검증) (2026-11-26 추가)
+- "AcSig" 가짜 설치 툴킷 명칭 — Push Security가 동일한 설치 명령을 공유하는 여러 macOS 가짜 설치 도메인을 "AcSig"로 명명해 연계했다는 서술(BleepingComputer 재인용, 원문 차단) — ⚠️ (미검증) (2026-11-26 추가)
+- **주의 — 미채택 (출처 불명확):** "cksyncd" 관련 검색에서 WebSearch가 com.apple.finder.agent LaunchAgent, `.zshrc` 수정, 전역 Git pre-commit/post-checkout 훅을 MacSync 지속성 메커니즘으로 종합 제시했으나, 결과 목록 내 특정 1차 출처를 지목할 수 없어 과거 Unit42/AMOS·Amatera 오귀속 사례와 유사한 혼동 위험으로 판단해 채택하지 않음 (2026-11-26, 미채택)
   - **승격 (2026-10-01):** 위 curl 플래그(`-k`, `-s`, `--max-time 30`) 서술이 이번 실행의 Microsoft(2026-08-18) 원문 재페치 본문에서 "Notable URI Patterns & HTTP Details" 항목으로 직접 확인되어 verified로 승격 — 네트워크/C2 통신 패턴 섹션에 반영.
 - InstallFix ↔ Claude Code 연관성 강화 — Trend Micro 보고서 제목("InstallFix and Claude Code: How Fake Install Pages Lead to Real Compromise")이 InstallFix 캠페인과 가짜 Claude Code 설치 페이지를 명시적으로 연결. 원문은 이번 실행에서도 차단되어 세부 IOC(특히 macOS측)는 미확인 — ⚠️ (미검증) (2026-09-21 추가)
 - **주의 — AppleScript 가짜 시스템 프롬프트 계열 캠페인과의 혼동 가능성:** Netskope 등이 보고한 별개의 macOS ClickFix 캠페인은 AppleScript 대화상자로 가짜 시스템 암호 프롬프트를 반복 표시해 자격증명을 탈취하고, 14개 브라우저·16개 암호화폐 지갑·200개 이상 확장 프로그램에서 세션 쿠키를 수집한다고 서술됨(검색 스니펫, 원문 미확인). 가짜 Claude 설치 페이지·MacSync와의 연결점은 확인되지 않아 본 저장소 IOC로 미채택 — ⚠️ (미검증, 채택 보류) (2026-09-22 추가)
