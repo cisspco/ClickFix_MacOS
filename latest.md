@@ -1,9 +1,9 @@
-# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-26 UTC
+# MacSync Stealer (ClickFix macOS) Snapshot — 2026-11-27 UTC
 
 ## 수집 상태
 - 지정 출처 접근성: Microsoft — fetched, ThreatFox — blocked, Beelzebub — blocked
 - 추가 페치 성공: 없음
-- 추가 페치 차단: huntress.com (`macsync-stealer-rat-reverse-engineering`), techcommunity.microsoft.com (`hunting-infostealers---macos-threats`, 신규 URL 변형), cisecurity.org (`macsync-stealer-campaign-impacting-us-sltt-macos-users`), kaspersky.com (신규 MacSync 변종 보도자료), seqrite.com — 5건 모두 DNS 조회 실패
+- 추가 페치 차단: www.huntress.com (`macsync-stealer-rat-reverse-engineering`), www.rapid7.com (`ve-clickfix-phishing-campaign-fake-claude-installer`), www.cisecurity.org (`macsync-stealer-campaign-impacting-us-sltt-macos-users`), www.bitdefender.com (`fake-claude-code-google-ads-malware`), gbhackers.com (`macsync-stealer-uses-30-rotating-domains`) — 5건 모두 DNS 조회 실패(전부 기존에도 차단 확인된 호스트, 신규 차단 도메인 없음)
 - seed: 9 / 검증: 31(도메인) + 행위·URI 패턴 다수 / 미검증: 15(도메인) + 2(IP) + 5(해시)
 
 ## 캐페인 개요
@@ -37,7 +37,7 @@
 - 신규 해시: 없음
 - 승격(미검증→검증): 없음
 - 폐기(sinkhole/takedown): 없음
-- 신규 보고서: 없음 (신규 IOC 기준) — Microsoft(2026-08-18) 원문 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴이 기존 기록과 100% 동일. ThreatFox·Beelzebub은 DNS 조회 실패(차단) 지속. 신규 시도 5건(huntress.com, techcommunity.microsoft.com, cisecurity.org, kaspersky.com, seqrite.com) 모두 DNS 조회 실패로 신규 차단 도메인 추가. WebSearch 5건에서 신규 출처 제목 2건을 확인해 `host-iocs.md` 미검증 항목에 추가: (1) cert.gov.az(아제르바이잔 CERT) "가짜 Claude AI 애플리케이션" 경보 제목만 확인, 원문 미시도(프록시 차단 목록 외 신규); (2) Push Security가 "AcSig"로 명명한 가짜 설치 툴킷이 동일 설치 명령을 공유하는 여러 도메인과 연계된다는 서술(BleepingComputer 재인용, 원문 차단). 그 외 WebSearch 결과(Huntress MacSync Stealer/RAT, CISecurity SLTT, Kaspersky 신버전, gbhackers 30+ 회전 도메인/신규 감염 체인, SOC Prime, Rapid7·Ahnlab·Notebookcheck·Bitdefender·Malwarebytes·Trend Micro 가짜 Claude 설치 페이지 재인용, Cato Networks 가짜 OpenAI Codex, Sophos ChatGPT Atlas 유인 3캠페인, Guardio "GoogleFix"/AMOS, Netskope AppleScript/CloudSyncD/AmnesiaStealer, BleepingComputer Bing발 SectopRAT(Windows, claude.ai 호스팅 악성 Artifact 직접 다운로드형 — ClickFix 터미널 유도가 아니므로 본 저장소 범위 밖) 등 무관/기존 패밀리)는 기존 기록의 재인용만 확인. "cksyncd" 검색에서 WebSearch가 종합한 com.apple.finder.agent LaunchAgent/.zshrc/Git hook 지속성 서술은 특정 1차 출처를 특정할 수 없어(과거 Unit42/AMOS, Amatera 오귀속 사례와 유사한 혼동 위험) 채택하지 않음 — 조용한 날(quiet day), 42일 연속 안정.
+- 신규 보고서: 없음 — Microsoft(2026-08-18) 원문 재페치 결과 검증 도메인 31건 및 URI/HTTP 패턴이 기존 기록과 100% 동일(43일 연속 안정). ThreatFox·Beelzebub은 DNS 조회 실패 지속. 신규 시도 5건(www.huntress.com, www.rapid7.com, www.cisecurity.org, www.bitdefender.com, gbhackers.com) 모두 DNS 조회 실패이나 전부 기존에 이미 차단으로 확인된 호스트라 신규 차단 도메인 추가 없음. WebSearch 5건의 결과도 모두 `host-iocs.md`에 이미 기록된 내용(Huntress RAT 컴포넌트, CISecurity SLTT, Kaspersky 신버전 보도자료, Seqrite, gbhackers 30+ 회전 도메인, SOC Prime, CERT 아제르바이잔 claude1 빌드, Push Security AcSig/claude-desk-code.com 등)의 재인용만 확인 — 조용한 날(quiet day), 43일 연속 안정.
 
 ## 대응 권고 (참고 — 고정 내용, 자문 내용이 바뀔 때만 갱신)
 - 감염 의심 단말 네트워크 격리
